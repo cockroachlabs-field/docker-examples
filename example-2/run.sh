@@ -1,5 +1,7 @@
 #!/bin/bash
 
+docker-compose build --no-cache
+
 docker-compose up -d
 
 echo "waiting for cluster to come up..."

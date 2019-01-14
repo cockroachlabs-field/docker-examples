@@ -1,8 +1,9 @@
 # CockroachDB Docker Examples
 
 ## Examples
-* [Example 1](example-1/README.md) - Simple 3 node cluster fronted by Nginx
-* [Example 2](example-2/README.md) - CockroachDB `BACKUP` to Nginx based "File Server"
+* [Example 1](example-1/README.md) - Simple 3 node cluster fronted by NGINX
+* [Example 2](example-2/README.md) - CockroachDB `BACKUP` to NGINX based "File Server"
+* [Example 3](example-3/README.md) - Building and running YCSB against CockroachDB
 
 
 ## Useful commands
