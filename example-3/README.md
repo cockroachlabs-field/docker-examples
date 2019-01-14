@@ -1,7 +1,18 @@
 # Example 3 - YCSB Benchmark Test
 Demonstrates building and executing the YCSB benchmark against a 3 node CockroachDB cluster.  More information on YCSB can be found here: https://github.com/brianfrankcooper/YCSB/wiki.
 
-For database configuration information, see [db.properties](ycsb/db.properties).
+
+## Configuration
+For database configuration information, see [db.properties](ycsb/db.properties).  By default this example executes a `workload` called `workloadb-cockroach` (see [workkload-cockroach](ycsb/workloadb-cockroach)).  This is a slight modification of the default YCSB `workloadb` configuration.
+
+The following `ARGS` in `docker-compose.yml` are used to control the versions of the Postgres JDBC driver and YCSB.  Feel free to modify if necessary.
+
+```
+- POSTGRESQL_JDBC_VERSION=42.2.5
+- GIT_BRANCH=0.15.0
+```
+
+### db.properties
 ```properties
 db.driver=org.postgresql.Driver
 db.url=jdbc:postgresql://lb:5432/ycsb?sslmode=disable&application_name=ycsb&reWriteBatchedInserts=true
@@ -13,7 +24,8 @@ jdbc.batchupdateapi=true
 db.batchsize=1000
 ```
 
-By default this example executes a `workload` called `workload-cockroach` (see [workkload-cockroach](ycsb/workload-cockroach)).  This is a slight modification of the default YCSB `workloadb` configuration.
+
+### workloadb-cockroach
 ```properties
 # modified workload B from YCSB
 #   changed recordcount from 1000 to 20000

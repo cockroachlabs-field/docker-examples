@@ -54,9 +54,10 @@ services:
     build:
       context: ycsb
       args:
+        - POSTGRESQL_JDBC_VERSION=42.2.5
         - GIT_BRANCH=0.15.0
     networks:
       - roach-net
-    command: run jdbc -target 100 -s -P /opt/ycsb/workloads/workload-cockroach -P /opt/ycsb/conf/db.properties
+    command: run jdbc -target 100 -s -P /opt/ycsb/workloads/workloadb-cockroach -P /opt/ycsb/conf/db.properties
     depends_on:
       - lb
