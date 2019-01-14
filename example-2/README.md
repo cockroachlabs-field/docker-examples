@@ -28,6 +28,6 @@ docker-compose exec roach-0 /cockroach/cockroach sql --insecure --execute="CREAT
 
 Open a `shell` to the `fileserver` and view `/mnt/cockroach-backups` to see the contents of a `BACKUP`.
 ```bash
-docker-compose exec fileserver sh
+docker exec -ti fileserver /bin/bash
 >cd /mnt/cockroach-backups
 ```
