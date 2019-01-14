@@ -1,4 +1,4 @@
-# Example 2
+# Example 3
 Demonstrates building and executing the YCSB benchmark against a 3 node CockroachDB cluster.  More information on YCSB can be found here: https://github.com/brianfrankcooper/YCSB/wiki.
 
 For database configuration information, see [db.properties](ycsb/db.properties).
@@ -50,9 +50,9 @@ requestdistribution=uniform
 * `ycsb` - YCSB client container responsible for executing benchmark workload
 
 ## Getting started
-2) because operation order is important, execute `./run.sh` instead of `docker-compose up`
-3) visit the CockroachDB UI @ http://localhost:8080
-4) have fun!
+1) because operation order is important, execute `./run.sh` instead of `docker-compose up`
+2) visit the CockroachDB UI @ http://localhost:8080
+3) have fun!
 
 ## Helpful Commands
 
