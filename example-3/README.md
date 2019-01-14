@@ -27,11 +27,11 @@ db.batchsize=1000
 
 ### workloadb-cockroach
 ```properties
-# modified workload B from YCSB
-#   changed recordcount from 1000 to 20000
-#   changed operationcount from 1000 to 0
-#   changed requestdistribution from zipfan to uniform
-
+# Modifications from Original Workload B:
+#   changed "recordcount" from "1000" to "20000"
+#   changed "operationcount" from "1000" to "0"
+#   changed "requestdistribution" from "zipfan" to "uniform"
+#
 # Yahoo! Cloud System Benchmark
 # Workload B: Read mostly workload
 #   Application example: photo tagging; add a tag is an update, but most operations are to read tags
@@ -52,6 +52,7 @@ scanproportion=0
 insertproportion=0
 
 requestdistribution=uniform
+
 ```
 
 ## Services
