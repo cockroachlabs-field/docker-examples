@@ -27,19 +27,6 @@ db.batchsize=1000
 
 ### workloadb-cockroach
 ```properties
-# Modifications from Original Workload B:
-#   changed "recordcount" from "1000" to "20000"
-#   changed "operationcount" from "1000" to "0"
-#   changed "requestdistribution" from "zipfan" to "uniform"
-#
-# Yahoo! Cloud System Benchmark
-# Workload B: Read mostly workload
-#   Application example: photo tagging; add a tag is an update, but most operations are to read tags
-#                        
-#   Read/update ratio: 95/5
-#   Default data size: 1 KB records (10 fields, 100 bytes each, plus key)
-#   Request distribution: zipfian
-
 recordcount=20000
 operationcount=0
 workload=com.yahoo.ycsb.workloads.CoreWorkload
