@@ -1,4 +1,4 @@
-# Example 3
+# Example 3 - YCSB Benchmark Test
 Demonstrates building and executing the YCSB benchmark against a 3 node CockroachDB cluster.  More information on YCSB can be found here: https://github.com/brianfrankcooper/YCSB/wiki.
 
 For database configuration information, see [db.properties](ycsb/db.properties).
