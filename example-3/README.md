@@ -72,5 +72,5 @@ requestdistribution=uniform
 ### Execute SQL
 Use the following to execute arbitrary SQL on the CockroachDB cluster.
 ```bash
-docker-compose exec roach-0 /cockroach/cockroach sql --insecure --execute="select * from ycsb;"
+docker-compose exec roach-0 /cockroach/cockroach sql --insecure --execute="select * from ycsb.usertable;"
 ```
