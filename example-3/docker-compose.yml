@@ -57,6 +57,6 @@ services:
         - GIT_BRANCH=0.15.0
     networks:
       - roach-net
-    command: run jdbc -P /opt/ycsb/workloads/workloadb -P /opt/ycsb/conf/db.properties
+    command: run jdbc -target 100 -s -P /opt/ycsb/workloads/workload-cockroach -P /opt/ycsb/conf/db.properties
     depends_on:
       - lb
