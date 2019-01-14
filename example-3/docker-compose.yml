@@ -1,0 +1,62 @@
+version: '3.5'
+
+networks:
+  roach-net:
+    driver: bridge
+
+services:
+
+  roach-0:
+    container_name: roach-0
+    hostname: roach-0
+    image: cockroachdb/cockroach:latest
+    networks:
+      - roach-net
+    command: start --logtostderr --insecure
+
+  roach-1:
+    container_name: roach-1
+    hostname: roach-1
+    image: cockroachdb/cockroach:latest
+    networks:
+      - roach-net
+    command: start --logtostderr --insecure --join=roach-0
+    depends_on:
+      - roach-0
+
+  roach-2:
+    container_name: roach-2
+    hostname: roach-2
+    image: cockroachdb/cockroach:latest
+    networks:
+      - roach-net
+    command: start --logtostderr --insecure --join=roach-0
+    depends_on:
+      - roach-0
+
+  lb:
+    container_name: lb
+    hostname: lb
+    build: ./nginx
+    networks:
+      - roach-net
+    ports:
+      - "5432:5432"
+      - "8080:8080"
+    links:
+      - roach-0
+      - roach-1
+      - roach-2
+
+  ycsb:
+    container_name: ycsb
+    hostname: ycsb
+    build:
+      context: ycsb
+      args:
+        - GIT_BRANCH=0.15.0
+    networks:
+      - roach-net
+    command: run jdbc -P /opt/ycsb/workloads/workloadb -P /opt/ycsb/conf/db.properties
+    depends_on:
+      - lb
