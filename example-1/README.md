@@ -19,3 +19,11 @@ Use the following to execute arbitrary SQL on the CockroachDB cluster.  The foll
 ```bash
 docker-compose exec roach-0 /cockroach/cockroach sql --insecure --execute="CREATE DATABASE test;"
 ```
+
+### Open Interactive Shells
+```bash
+docker exec -ti roach-0 /bin/bash
+docker exec -ti roach-1 /bin/bash
+docker exec -ti roach-2 /bin/bash
+docker exec -ti lb /bin/bash
+```

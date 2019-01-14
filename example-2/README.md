@@ -26,8 +26,11 @@ Use the following to execute arbitrary SQL on the CockroachDB cluster.  The foll
 docker-compose exec roach-0 /cockroach/cockroach sql --insecure --execute="CREATE DATABASE test;"
 ```
 
-Open a `shell` to the `fileserver` and view `/mnt/cockroach-backups` to see the contents of a `BACKUP`.
+### Open Interactive Shells
 ```bash
+docker exec -ti roach-0 /bin/bash
+docker exec -ti roach-1 /bin/bash
+docker exec -ti roach-2 /bin/bash
+docker exec -ti lb /bin/bash
 docker exec -ti fileserver /bin/bash
->cd /mnt/cockroach-backups
 ```
