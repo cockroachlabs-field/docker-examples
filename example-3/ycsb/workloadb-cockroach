@@ -1,7 +1,7 @@
-# modified workload B from YCSB
-#   changed recordcount from 1000 to 20000
-#   changed operationcount from 1000 to 0
-#   changed requestdistribution from zipfan to uniform
+# Modifications from Original Workload B:
+#   changed "recordcount" from "1000" to "20000"
+#   changed "operationcount" from "1000" to "0"
+#   changed "requestdistribution" from "zipfan" to "uniform"
 
 # Yahoo! Cloud System Benchmark
 # Workload B: Read mostly workload
