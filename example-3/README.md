@@ -15,7 +15,7 @@ Demonstrates building and executing the YCSB benchmark against a 3 node Cockroac
 
 
 ## Advanced Configuration
-For database configuration information, see [db.properties](ycsb/db.properties).  By default this example executes a `workload` called `workload-b-cockroach` (see [workload-cockroach](ycsb/workload-b-cockroach)).  This is a slight modification of the default YCSB `workloadb` configuration.
+For database configuration information, see [db.properties](ycsb/db.properties).  By default this example executes a `workload` called `workload-b-cockroach` (see [workload-b-cockroach](ycsb/workload-b-cockroach)).  This is a slight modification of the default YCSB `workloadb` configuration.
 
 The following `ARGS` in `docker-compose.yml` are used to control the versions of the Postgres JDBC driver and YCSB.  Feel free to modify if necessary.
 
