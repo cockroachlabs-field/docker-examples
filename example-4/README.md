@@ -1,4 +1,4 @@
-# Example 4 - YCSB Benchmark Test
+# Example 4 - YCSB Benchmark Test (1 node)
 Demonstrates building and executing the YCSB benchmark against a single CockroachDB node.  More information on YCSB can be found here: https://github.com/brianfrankcooper/YCSB/wiki.
 
 ## Services
