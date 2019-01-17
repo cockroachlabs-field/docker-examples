@@ -36,9 +36,9 @@ jdbc.batchupdateapi=true
 db.batchsize=1000
 ```
 
-#### Included Workloads
+### Included Workloads
 
-##### workload-a-cockroach
+#### workload-a-cockroach
 ```properties
 recordcount=20000
 operationcount=1000
@@ -54,7 +54,7 @@ insertproportion=0
 requestdistribution=zipfian
 ```
 
-##### workload-b-cockroach
+#### workload-b-cockroach
 ```properties
 recordcount=20000
 operationcount=1000
@@ -70,7 +70,7 @@ insertproportion=0
 requestdistribution=zipfan
 ```
 
-##### workload-c-cockroach
+#### workload-c-cockroach
 ```properties
 recordcount=20000
 operationcount=1000
@@ -86,7 +86,7 @@ insertproportion=0
 requestdistribution=zipfian
 ```
 
-##### workload-d-cockroach
+#### workload-d-cockroach
 ```properties
 recordcount=20000
 operationcount=1000
@@ -102,7 +102,7 @@ insertproportion=0.05
 requestdistribution=latest
 ```
 
-##### workload-e-cockroach
+#### workload-e-cockroach
 ```properties
 recordcount=20000
 operationcount=1000
@@ -122,7 +122,7 @@ maxscanlength=100
 scanlengthdistribution=uniform
 ```
 
-##### workload-f-cockroach
+#### workload-f-cockroach
 ```properties
 recordcount=20000
 operationcount=1000
