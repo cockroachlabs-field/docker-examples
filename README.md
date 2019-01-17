@@ -19,3 +19,8 @@ Copy `debug.zip` from `roach-0` to current local director
 docker cp roach-0:/cockroach/cockroach-data/logs/debug.zip .
 ```
 
+### Prune Docker Images, etc.
+```bash
+docker system prune -a -f --volumes --filter "label=maintainer=tjveil@gmail.com"
+```
+
