@@ -13,7 +13,7 @@ ARG GIT_BRANCH=master
 RUN mkdir -v /opt/ycsb \
     && git clone https://github.com/brianfrankcooper/YCSB.git /opt/ycsb \
     && cd /opt/ycsb \
-    && git checkout ${GIT_BRANCH} -b ${GIT_BRANCH} \
+    && git checkout -f ${GIT_BRANCH} \
     && mvn -pl com.yahoo.ycsb:jdbc-binding -am clean package -DskipTests=true
 
 

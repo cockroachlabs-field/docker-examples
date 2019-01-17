@@ -13,16 +13,19 @@ Demonstrates building and executing the YCSB benchmark against a 3 node Cockroac
 2) visit the CockroachDB UI @ http://localhost:8080
 3) have fun!
 
+## Basic Configuraiton
+The following `environment` variables in `docker-compose.yml` control workload execution...
+* `WORKLOAD_NAME` - The name of the workload to run.  The default value is `workload-b-cockroach`.
+* `WORKLOAD_TARGET_OPS` - The target Operations per Second (OPS).  The default value is `100`.
+* `WORKLOAD_RECORD_COUNT` - The number or records to load into the database.   The default value is `20000`.
 
 ## Advanced Configuration
-For database configuration information, see [db.properties](ycsb/db.properties).  By default this example executes a `workload` called `workload-b-cockroach` (see [workload-b-cockroach](ycsb/workload-b-cockroach)).  This is a slight modification of the default YCSB `workloadb` configuration.
+For database configuration information, see [db.properties](ycsb/db.properties). 
 
-The following `ARGS` in `docker-compose.yml` are used to control the versions of the Postgres JDBC driver and YCSB.  Feel free to modify if necessary.
+The following `args` in `docker-compose.yml` are used to control the versions of the Postgres JDBC driver and YCSB.  Feel free to modify if necessary.
+* `POSTGRESQL_JDBC_VERSION` - The version of the Postgres JDBC driver to download and use.  The default value is `42.2.5`.
+* `GIT_BRANCH` - The version of YCSB to checkout from `git`.   The default value is `master`.
 
-```
-- POSTGRESQL_JDBC_VERSION=42.2.5
-- GIT_BRANCH=0.15.0
-```
 
 ### db.properties
 ```properties
@@ -146,7 +149,7 @@ You can also run the following workloads
 ### Execute SQL
 Use the following to execute arbitrary SQL on the CockroachDB cluster.
 ```bash
-docker-compose exec roach-0 /cockroach/cockroach sql --insecure --execute="select * from ycsb.usertable;"
+docker-compose exec roach-0 /cockroach/cockroach sql --insecure --execute="select count(*) from ycsb.usertable;"
 ```
 
 ### Open Interactive Shells
