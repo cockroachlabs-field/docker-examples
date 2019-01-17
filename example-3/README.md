@@ -13,7 +13,7 @@ Demonstrates building and executing the YCSB benchmark against a 3 node Cockroac
 2) visit the CockroachDB UI @ http://localhost:8080
 3) have fun!
 
-## Basic Configuraiton
+## Basic Configuration
 The following `environment` variables in `docker-compose.yml` control workload execution...
 * `WORKLOAD_NAME` - The name of the workload to run.  The default value is `workload-b-cockroach`.
 * `WORKLOAD_TARGET_OPS` - The target Operations per Second (OPS).  The default value is `100`.
