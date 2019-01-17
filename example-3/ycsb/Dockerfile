@@ -37,7 +37,12 @@ RUN tar -xvf /opt/ycsb/ycsb.tar.gz -C /opt/ycsb --strip-components=1 \
     && ln -s /opt/ycsb/lib/jdbc-binding-*.jar /opt/ycsb/lib/jdbc-binding.jar
 
 COPY db.properties /opt/ycsb/conf/db.properties
-COPY workloadb-cockroach /opt/ycsb/workloads/workloadb-cockroach
+COPY workload-a-cockroach /opt/ycsb/workloads/workload-a-cockroach
+COPY workload-b-cockroach /opt/ycsb/workloads/workload-b-cockroach
+COPY workload-c-cockroach /opt/ycsb/workloads/workload-c-cockroach
+COPY workload-d-cockroach /opt/ycsb/workloads/workload-d-cockroach
+COPY workload-e-cockroach /opt/ycsb/workloads/workload-e-cockroach
+COPY workload-f-cockroach /opt/ycsb/workloads/workload-f-cockroach
 
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod a+x /entrypoint.sh

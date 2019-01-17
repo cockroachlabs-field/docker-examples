@@ -1,9 +1,21 @@
 # Example 3 - YCSB Benchmark Test
 Demonstrates building and executing the YCSB benchmark against a 3 node CockroachDB cluster.  More information on YCSB can be found here: https://github.com/brianfrankcooper/YCSB/wiki.
 
+## Services
+* `roach-0` - CockroachDB node
+* `roach-1` - CockroachDB node
+* `roach-2` - CockroachDB node
+* `lb` - NGINX acting as load balancer
+* `ycsb` - YCSB client container responsible for executing benchmark workload
 
-## Configuration
-For database configuration information, see [db.properties](ycsb/db.properties).  By default this example executes a `workload` called `workloadb-cockroach` (see [workload-cockroach](ycsb/workloadb-cockroach)).  This is a slight modification of the default YCSB `workloadb` configuration.
+## Getting started
+1) because operation order is important, execute `./run.sh` instead of `docker-compose up`
+2) visit the CockroachDB UI @ http://localhost:8080
+3) have fun!
+
+
+## Advanced Configuration
+For database configuration information, see [db.properties](ycsb/db.properties).  By default this example executes a `workload` called `workload-b-cockroach` (see [workload-cockroach](ycsb/workload-b-cockroach)).  This is a slight modification of the default YCSB `workloadb` configuration.
 
 The following `ARGS` in `docker-compose.yml` are used to control the versions of the Postgres JDBC driver and YCSB.  Feel free to modify if necessary.
 
@@ -24,11 +36,28 @@ jdbc.batchupdateapi=true
 db.batchsize=1000
 ```
 
+#### Included Workloads
 
-### workloadb-cockroach
+##### workload-a-cockroach
 ```properties
 recordcount=20000
-operationcount=0
+operationcount=1000
+workload=com.yahoo.ycsb.workloads.CoreWorkload
+
+readallfields=true
+
+readproportion=0.5
+updateproportion=0.5
+scanproportion=0
+insertproportion=0
+
+requestdistribution=zipfian
+```
+
+##### workload-b-cockroach
+```properties
+recordcount=20000
+operationcount=1000
 workload=com.yahoo.ycsb.workloads.CoreWorkload
 
 readallfields=true
@@ -38,21 +67,79 @@ updateproportion=0.05
 scanproportion=0
 insertproportion=0
 
-requestdistribution=uniform
-
+requestdistribution=zipfan
 ```
 
-## Services
-* `roach-0` - CockroachDB node
-* `roach-1` - CockroachDB node
-* `roach-2` - CockroachDB node
-* `lb` - NGINX acting as load balancer
-* `ycsb` - YCSB client container responsible for executing benchmark workload
+##### workload-c-cockroach
+```properties
+recordcount=20000
+operationcount=1000
+workload=com.yahoo.ycsb.workloads.CoreWorkload
 
-## Getting started
-1) because operation order is important, execute `./run.sh` instead of `docker-compose up`
-2) visit the CockroachDB UI @ http://localhost:8080
-3) have fun!
+readallfields=true
+
+readproportion=1
+updateproportion=0
+scanproportion=0
+insertproportion=0
+
+requestdistribution=zipfian
+```
+
+##### workload-d-cockroach
+```properties
+recordcount=20000
+operationcount=1000
+workload=com.yahoo.ycsb.workloads.CoreWorkload
+
+readallfields=true
+
+readproportion=0.95
+updateproportion=0
+scanproportion=0
+insertproportion=0.05
+
+requestdistribution=latest
+```
+
+##### workload-e-cockroach
+```properties
+recordcount=20000
+operationcount=1000
+workload=com.yahoo.ycsb.workloads.CoreWorkload
+
+readallfields=true
+
+readproportion=0
+updateproportion=0
+scanproportion=0.95
+insertproportion=0.05
+
+requestdistribution=zipfian
+
+maxscanlength=100
+
+scanlengthdistribution=uniform
+```
+
+##### workload-f-cockroach
+```properties
+recordcount=20000
+operationcount=1000
+workload=com.yahoo.ycsb.workloads.CoreWorkload
+
+readallfields=true
+
+readproportion=0.5
+updateproportion=0
+scanproportion=0
+insertproportion=0
+readmodifywriteproportion=0.5
+
+requestdistribution=zipfian
+```
+
+You can also run the following workloads 
 
 ## Helpful Commands
 
