@@ -4,7 +4,7 @@
 * [Example 1](example-1/README.md) - Simple 3 node cluster fronted by NGINX
 * [Example 2](example-2/README.md) - CockroachDB `BACKUP` to NGINX based "File Server"
 * [Example 3](example-3/README.md) - Building and running YCSB against a 3 node CockroachDB cluster
-* [Example 3](example-4/README.md) - Building and running YCSB against a single CockroachDB node
+* [Example 4](example-4/README.md) - Building and running YCSB against a single CockroachDB node
 
 
 ## Useful commands
