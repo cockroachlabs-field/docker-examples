@@ -54,7 +54,7 @@ insertproportion=0
 requestdistribution=zipfian
 ```
 
-#### workload-b-cockroach
+#### workload-b-cockroach (default)
 ```properties
 recordcount=20000
 operationcount=1000
