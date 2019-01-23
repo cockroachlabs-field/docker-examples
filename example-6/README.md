@@ -7,7 +7,7 @@ Simple multi-node example that demonstrates basic locality and partitioning conc
 * `east_central` table is pinned to the `east` and `west` data centers
 * `central_west` table is pinned to the `central` and `west` data centers
 
-This distribution can be verified by the SQL commands below of via the UI... http://localhost:8001/#/data-distribution.
+This distribution can be verified by the SQL commands below or via the UI... http://localhost:8001/#/data-distribution.
 
 ## Services
 * `east-1` - CockroachDB node in `east` data center
