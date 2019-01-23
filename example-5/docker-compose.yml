@@ -53,6 +53,9 @@ services:
     hostname: oltp-bench
     build:
       context: oltp-bench
+    environment:
+      - BENCHMARK_NAME=tpcc
+      - BENCHMARK_CONFIG_FILE=crdb_tpcc_config.xml
     networks:
       - roach-net
     depends_on:

@@ -39,7 +39,7 @@ COPY --from=benchmark-builder  /opt/oltpbench /opt/oltpbench
 #    && curl -fSL https://jdbc.postgresql.org/download/postgresql-$POSTGRESQL_JDBC_VERSION.jar -o /opt/ycsb/lib/postgresql-jdbc.jar \
 #    && ln -s /opt/ycsb/lib/jdbc-binding-*.jar /opt/ycsb/lib/jdbc-binding.jar
 #
-#COPY db.properties /opt/ycsb/conf/db.properties
+COPY crdb_tpcc_config.xml /opt/oltpbench/config/crdb_tpcc_config.xml
 #COPY workload-a-cockroach /opt/ycsb/workloads/workload-a-cockroach
 #COPY workload-b-cockroach /opt/ycsb/workloads/workload-b-cockroach
 #COPY workload-c-cockroach /opt/ycsb/workloads/workload-c-cockroach
