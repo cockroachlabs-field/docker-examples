@@ -13,12 +13,10 @@ docker-compose exec east-1 /cockroach/cockroach sql --insecure --execute="CREATE
 docker-compose exec east-1 /cockroach/cockroach sql --insecure --execute="CREATE TABLE example6.west_only (id UUID PRIMARY KEY DEFAULT gen_random_uuid(), name STRING);"
 docker-compose exec east-1 /cockroach/cockroach sql --insecure --execute="CREATE TABLE example6.east_central (id UUID PRIMARY KEY DEFAULT gen_random_uuid(), name STRING);"
 docker-compose exec east-1 /cockroach/cockroach sql --insecure --execute="CREATE TABLE example6.central_west (id UUID PRIMARY KEY DEFAULT gen_random_uuid(), name STRING);"
-docker-compose exec east-1 /cockroach/cockroach sql --insecure --execute="CREATE TABLE example6.central_west_json (id UUID PRIMARY KEY DEFAULT gen_random_uuid(), name STRING);"
 
 
 docker-compose exec east-1 /cockroach/cockroach sql --insecure --execute="ALTER TABLE example6.east_only CONFIGURE ZONE USING constraints='[+datacenter=east]';"
 docker-compose exec east-1 /cockroach/cockroach sql --insecure --execute="ALTER TABLE example6.central_only CONFIGURE ZONE USING constraints='[+datacenter=central]';"
 docker-compose exec east-1 /cockroach/cockroach sql --insecure --execute="ALTER TABLE example6.west_only CONFIGURE ZONE USING constraints='[+datacenter=west]';"
-docker-compose exec east-1 /cockroach/cockroach sql --insecure --execute="ALTER TABLE example6.east_central CONFIGURE ZONE USING constraints='[+datacenter=east, +datacenter=central]';"
-docker-compose exec east-1 /cockroach/cockroach sql --insecure --execute="ALTER TABLE example6.central_west CONFIGURE ZONE USING constraints='[+datacenter=central, +datacenter=west]';"
-docker-compose exec east-1 /cockroach/cockroach sql --insecure --execute="ALTER TABLE example6.central_west_json CONFIGURE ZONE USING constraints='{+datacenter=central: 2, +datacenter=west: 1}';"
+docker-compose exec east-1 /cockroach/cockroach sql --insecure --execute="ALTER TABLE example6.east_central CONFIGURE ZONE USING constraints='{+datacenter=east: 2, +datacenter=central: 1}';"
+docker-compose exec east-1 /cockroach/cockroach sql --insecure --execute="ALTER TABLE example6.central_west CONFIGURE ZONE USING constraints='{+datacenter=central: 1, +datacenter=west: 2}';"
