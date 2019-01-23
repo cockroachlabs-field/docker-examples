@@ -1,7 +1,7 @@
 ####################################
 #   Multi-stage build
 #       1. build oltpbench
-#       2. build ycsb client
+#       2. build oltpbench client
 ####################################
 
 # Stage 1 - Build oltpbench
@@ -26,26 +26,14 @@ FROM openjdk:8-jdk-slim
 
 LABEL maintainer="tjveil@gmail.com"
 
-ARG POSTGRESQL_JDBC_VERSION=42.2.5
-
 RUN apt-get update \
     && apt-get install -y curl \
     && mkdir -v /opt/oltpbench
 
 COPY --from=benchmark-builder  /opt/oltpbench /opt/oltpbench
-#
-#RUN tar -xvf /opt/ycsb/ycsb.tar.gz -C /opt/ycsb --strip-components=1 \
-#    && rm -rfv /opt/ycsb/ycsb.tar.gz \
-#    && curl -fSL https://jdbc.postgresql.org/download/postgresql-$POSTGRESQL_JDBC_VERSION.jar -o /opt/ycsb/lib/postgresql-jdbc.jar \
-#    && ln -s /opt/ycsb/lib/jdbc-binding-*.jar /opt/ycsb/lib/jdbc-binding.jar
-#
+
 COPY crdb_tpcc_config.xml /opt/oltpbench/config/crdb_tpcc_config.xml
-#COPY workload-a-cockroach /opt/ycsb/workloads/workload-a-cockroach
-#COPY workload-b-cockroach /opt/ycsb/workloads/workload-b-cockroach
-#COPY workload-c-cockroach /opt/ycsb/workloads/workload-c-cockroach
-#COPY workload-d-cockroach /opt/ycsb/workloads/workload-d-cockroach
-#COPY workload-e-cockroach /opt/ycsb/workloads/workload-e-cockroach
-#COPY workload-f-cockroach /opt/ycsb/workloads/workload-f-cockroach
+COPY crdb_ycsb_config.xml /opt/oltpbench/config/crdb_ycsb_config.xml
 
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod a+x /entrypoint.sh
