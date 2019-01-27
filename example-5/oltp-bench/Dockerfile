@@ -16,7 +16,6 @@ RUN mkdir -v /opt/oltpbench \
     && git clone https://github.com/timveil-cockroach/oltpbench.git /opt/oltpbench \
     && cd /opt/oltpbench \
     && git checkout -f ${GIT_BRANCH} \
-    && export JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF8 \
     && ant
 
 

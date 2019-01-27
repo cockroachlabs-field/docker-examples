@@ -1,11 +1,11 @@
-# Example 1 - Basic CockroachDB Cluster (NGINX)
-Simple 3 node CockroachDB cluster fronted by NGINX acting as load balancer
+# Example 1b - Basic CockroachDB Cluster (HAProxy)
+Simple 3 node CockroachDB cluster fronted by HAProxy acting as load balancer
 
 ## Services
 * `roach-0` - CockroachDB node
 * `roach-1` - CockroachDB node
 * `roach-2` - CockroachDB node
-* `lb` - NGINX acting as load balancer
+* `lb` - HAProxy acting as load balancer
 
 ## Getting started
 1) run `docker-compose up`
