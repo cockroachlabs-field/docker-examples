@@ -1,5 +1,5 @@
 # Example 1 - Basic CockroachDB Cluster (NGINX)
-Simple 3 node CockroachDB cluster fronted by NGINX acting as load balancer
+Simple 3 node CockroachDB cluster with NGINX acting as load balancer
 
 ## Services
 * `roach-0` - CockroachDB node
