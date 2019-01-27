@@ -44,6 +44,7 @@ services:
       - roach-net
     ports:
       - "5432:5432"
+      - "8081:8081"
     links:
       - roach-0
       - roach-1

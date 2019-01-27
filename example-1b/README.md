@@ -10,6 +10,7 @@ Simple 3 node CockroachDB cluster fronted by HAProxy acting as load balancer
 ## Getting started
 1) run `docker-compose up`
 2) visit the CockroachDB UI @ http://localhost:8080
+2) visit the HAProxy UI @ http://localhost:8081
 3) have fun!
 
 ## Helpful Commands
