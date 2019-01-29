@@ -9,7 +9,7 @@ Demonstrates backing up a 3 node cluster to a remote file server using NGINX.  R
 * `roach-0` - CockroachDB node
 * `roach-1` - CockroachDB node
 * `roach-2` - CockroachDB node
-* `lb` - NGINX acting as load balancer
+* `lb` - HAProxy acting as load balancer
 * `fileserver` - NGINX acting as remote file server
 
 ## Getting started

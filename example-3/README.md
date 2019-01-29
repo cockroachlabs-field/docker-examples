@@ -5,7 +5,7 @@ Demonstrates building and executing the YCSB benchmark against a 3 node Cockroac
 * `roach-0` - CockroachDB node
 * `roach-1` - CockroachDB node
 * `roach-2` - CockroachDB node
-* `lb` - NGINX acting as load balancer
+* `lb` - HAProxy acting as load balancer
 * `ycsb` - YCSB client container responsible for executing benchmark workload
 
 ## Getting started
