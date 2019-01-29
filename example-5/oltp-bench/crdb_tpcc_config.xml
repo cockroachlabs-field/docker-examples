@@ -3,7 +3,7 @@
 
     <dbtype>cockroachdb</dbtype>
     <driver>org.postgresql.Driver</driver>
-    <DBUrl>jdbc:postgresql://lb:5432/oltpbench?sslmode=disable&amp;application_name=tpcc&amp;reWriteBatchedInserts=true</DBUrl>
+    <DBUrl>jdbc:postgresql://lb:5432/oltpbench?sslmode=disable&amp;ApplicationName=tpcc&amp;reWriteBatchedInserts=true</DBUrl>
     <username>root</username>
     <password></password>
     <isolation>TRANSACTION_SERIALIZABLE</isolation>
