@@ -49,3 +49,11 @@ docker exec -ti west-1 /bin/bash
 docker exec -ti west-2 /bin/bash
 docker exec -ti west-3 /bin/bash
 ```
+
+### Enable Enterprise License
+Use the following commands to enable your enterprise license.  Obviously replace `CHANGE_ME` with your information.
+```bash
+docker-compose exec east-1 /cockroach/cockroach sql --insecure --execute="SET CLUSTER SETTING cluster.organization = 'CHANGE_ME';"
+docker-compose exec east-1 /cockroach/cockroach sql --insecure --execute="SET CLUSTER SETTING enterprise.license = 'CHANGE_ME';"
+```
+
