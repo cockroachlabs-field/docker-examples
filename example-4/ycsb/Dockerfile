@@ -6,7 +6,7 @@
 
 # Stage 1 - Build YCSB
 
-FROM maven:3.5 as ycsb-builder
+FROM maven:3-jdk-8 as ycsb-builder
 
 ARG GIT_BRANCH=master
 

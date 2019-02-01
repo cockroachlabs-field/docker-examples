@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <parameters>
 
-    <dbtype>cockroachdb</dbtype>
+    <dbtype>COCKROACHDB</dbtype>
     <driver>org.postgresql.Driver</driver>
     <DBUrl>jdbc:postgresql://lb:5432/oltpbench?sslmode=disable&amp;ApplicationName=tpcc&amp;reWriteBatchedInserts=true</DBUrl>
     <username>root</username>

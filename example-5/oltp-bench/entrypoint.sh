@@ -10,8 +10,9 @@ else
 
     echo "****** entrypoint.sh:    executing OLTP Benchmark: benchmark = [${BENCHMARK_NAME}] using config file = [${BENCHMARK_CONFIG_FILE}]..."
 
-    # don't like this hack cd; todo make this a bundled jar and remove clunky startup
     cd  /opt/oltpbench
-    ./oltpbenchmark -b ${BENCHMARK_NAME} -c config/${BENCHMARK_CONFIG_FILE} --create=true --load=true --execute=true -s 5
+
+    java -jar oltpbench-*.jar -b ${BENCHMARK_NAME} -c config/${BENCHMARK_CONFIG_FILE} --create=true --load=true --execute=true -s 5
+
 
 fi

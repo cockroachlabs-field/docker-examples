@@ -6,17 +6,15 @@
 
 # Stage 1 - Build oltpbench
 
-FROM frekele/ant:latest as benchmark-builder
+FROM maven:3-jdk-8 as benchmark-builder
 
-ARG GIT_BRANCH=master
+ARG GIT_BRANCH=maven
 
 RUN mkdir -v /opt/oltpbench \
-    && apt-get update \
-    && apt-get install -y git \
     && git clone https://github.com/timveil-cockroach/oltpbench.git /opt/oltpbench \
     && cd /opt/oltpbench \
     && git checkout -f ${GIT_BRANCH} \
-    && ant
+    && mvn clean package -DskipTests=true
 
 
 # Stage 2 - Build oltpbench client
@@ -26,10 +24,12 @@ FROM openjdk:8-jdk-slim
 LABEL maintainer="tjveil@gmail.com"
 
 RUN apt-get update \
-    && apt-get install -y curl \
     && mkdir -v /opt/oltpbench
 
-COPY --from=benchmark-builder  /opt/oltpbench /opt/oltpbench
+COPY --from=benchmark-builder  /opt/oltpbench/target/*.tgz /opt/oltpbench/oltpbench.tgz
+
+RUN tar -xvf /opt/oltpbench/oltpbench.tgz -C /opt/oltpbench --strip-components=1 \
+    && rm -rf /opt/oltpbench/oltpbench.tgz
 
 COPY crdb_tpcc_config.xml /opt/oltpbench/config/crdb_tpcc_config.xml
 COPY crdb_ycsb_config.xml /opt/oltpbench/config/crdb_ycsb_config.xml
