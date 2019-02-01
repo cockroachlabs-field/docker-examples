@@ -10,9 +10,9 @@
     <password></password>
     <isolation>TRANSACTION_SERIALIZABLE</isolation>
 
-    <scalefactor>1200</scalefactor>
+    <scalefactor>2</scalefactor>
 
-    <terminals>50</terminals>
+    <terminals>2</terminals>
     <works>
         <work>
             <time>300</time>
