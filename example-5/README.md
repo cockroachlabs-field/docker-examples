@@ -1,5 +1,5 @@
 # Example 5 - OLTP-Bench Suite
-Demonstrates building and executing the `OLTP-Bench` suite against a single CockroachDB node.  More information on `OLTP-Bench` can be found here: https://github.com/timveil-cockroach/oltpbench.
+Demonstrates building and executing the `OLTP-Bench` suite against a 3 node CockroachDB cluster.  More information on `OLTP-Bench` can be found here: https://github.com/timveil-cockroach/oltpbench.
 
 ## Services
 * `roach-0` - CockroachDB node
