@@ -4,7 +4,7 @@ set -eu
 if [[ "${1-}" = "bash" ]]; then
     shift
 
-    echo "****** entrypoint.sh:    executing shell with [$@]"
+    echo "****** entrypoint.sh:    executing bash with [$@]"
     exec /bin/bash "$@"
 
 else
