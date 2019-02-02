@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<parameters>
+
+    <!-- Connection details -->
+    <dbtype>COCKROACHDB</dbtype>
+    <driver>org.postgresql.Driver</driver>
+    <DBUrl>jdbc:postgresql://lb:5432/oltpbench?sslmode=disable&amp;ApplicationName=resourcestresser&amp;reWriteBatchedInserts=true</DBUrl>
+    <username>root</username>
+    <password></password>
+    <isolation>TRANSACTION_SERIALIZABLE</isolation>
+
+    <!-- Scalefactor in ResourceStresser scales by *100 the number of employees -->
+    <scalefactor>2</scalefactor>
+
+    <!-- The workload -->
+    <terminals>2</terminals>
+    <works>
+        <work>
+            <time>300</time>
+            <rate>10000</rate>
+            <weights>16.66,16.66,16.66,16.66,16.66,16.7</weights>
+        </work>
+    </works>
+
+    <!-- R/S Procedures declaration -->
+    <transactiontypes>
+        <transactiontype>
+            <name>CPU1</name>
+        </transactiontype>
+        <transactiontype>
+            <name>CPU2</name>
+        </transactiontype>
+        <transactiontype>
+            <name>IO1</name>
+        </transactiontype>
+        <transactiontype>
+            <name>IO2</name>
+        </transactiontype>
+        <transactiontype>
+            <name>Contention1</name>
+        </transactiontype>
+        <transactiontype>
+            <name>Contention2</name>
+        </transactiontype>
+    </transactiontypes>
+
+</parameters>

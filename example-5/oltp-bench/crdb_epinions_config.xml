@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<parameters>
+
+    <!-- Connection details -->
+    <dbtype>COCKROACHDB</dbtype>
+    <driver>org.postgresql.Driver</driver>
+    <DBUrl>jdbc:postgresql://lb:5432/oltpbench?sslmode=disable&amp;ApplicationName=epinions&amp;reWriteBatchedInserts=true</DBUrl>
+    <username>root</username>
+    <password></password>
+    <isolation>TRANSACTION_SERIALIZABLE</isolation>
+
+    <!-- Scalefactor in Epinions scales by *2000 the number of users-->
+    <scalefactor>2</scalefactor>
+
+    <!-- The workload -->
+    <terminals>2</terminals>
+    <works>
+        <work>
+            <time>300</time>
+            <rate>10000</rate>
+            <weights>10,10,10,10,10,10,10,10,20</weights>
+        </work>
+    </works>
+
+    <!-- Epinions Procedures Declaration -->
+    <transactiontypes>
+        <transactiontype>
+            <name>GetReviewItemById</name>
+        </transactiontype>
+        <transactiontype>
+            <name>GetReviewsByUser</name>
+        </transactiontype>
+        <transactiontype>
+            <name>GetAverageRatingByTrustedUser</name>
+        </transactiontype>
+        <transactiontype>
+            <name>GetItemAverageRating</name>
+        </transactiontype>
+        <transactiontype>
+            <name>GetItemReviewsByTrustedUser</name>
+        </transactiontype>
+        <transactiontype>
+            <name>UpdateUserName</name>
+        </transactiontype>
+        <transactiontype>
+            <name>UpdateItemTitle</name>
+        </transactiontype>
+        <transactiontype>
+            <name>UpdateReviewRating</name>
+        </transactiontype>
+        <transactiontype>
+            <name>UpdateTrustRating</name>
+        </transactiontype>
+    </transactiontypes>
+</parameters>

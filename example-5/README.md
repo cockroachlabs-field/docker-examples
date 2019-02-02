@@ -1,6 +1,40 @@
 # Example 5 - OLTP Bench
+Demonstrates building and executing the `OLTPBench` suite against a single CockroachDB node.  More information on `OLTPBench` can be found here: https://github.com/timveil-cockroach/oltpbench.
 
-Very much a work in progress, but a good start.  Not functional! Do not use!
+## Services
+* `roach-0` - CockroachDB node
+* `roach-1` - CockroachDB node
+* `roach-2` - CockroachDB node
+* `lb` - HAProxy acting as load balancer
+* `oltp-bench` - `OLTPBench` client container responsible for executing benchmark workload
+
+## Getting started
+1) because operation order is important, execute `./run.sh` instead of `docker-compose up`
+2) visit the CockroachDB UI @ http://localhost:8080
+3) have fun!
+
+## Basic Configuration
+The following `environment` variables in `docker-compose.yml` control workload execution...
+* `BENCHMARK_NAME` - The name of the workload to run.  The default value is `tpcc`.
+    * Supported Values:
+        * `acutionmark`
+        * `chbenchmark`
+        * `epinions`
+        * `linkbench`
+        * `noop`
+        * `resourcestresser`
+        * `seats`
+        * `sibench`
+        * `smallbank`
+        * `tatp`
+        * `tpcc`
+        * `tpcds`
+        * `tpch`
+        * `twitter`
+        * `voter`
+        * `wikipedia`
+        * `ycsb`
+* `BENCHMARK_CONFIG_FILE` - The benchmark configuration file.  The default is `crdb_tpcc_config.xml`.
 
 ## Helpful Commands
 
