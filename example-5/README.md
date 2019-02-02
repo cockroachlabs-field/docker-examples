@@ -1,12 +1,12 @@
 # Example 5 - OLTP-Bench Suite
-Demonstrates building and executing the `OLTPBench` suite against a single CockroachDB node.  More information on `OLTPBench` can be found here: https://github.com/timveil-cockroach/oltpbench.
+Demonstrates building and executing the `OLTP-Bench` suite against a single CockroachDB node.  More information on `OLTP-Bench` can be found here: https://github.com/timveil-cockroach/oltpbench.
 
 ## Services
 * `roach-0` - CockroachDB node
 * `roach-1` - CockroachDB node
 * `roach-2` - CockroachDB node
 * `lb` - HAProxy acting as load balancer
-* `oltp-bench` - `OLTPBench` client container responsible for executing benchmark workload
+* `oltp-bench` - `OLTP-Bench` client container responsible for executing benchmark workload
 
 ## Getting started
 1) because operation order is important, execute `./run.sh` instead of `docker-compose up`
