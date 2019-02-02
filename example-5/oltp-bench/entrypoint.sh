@@ -1,11 +1,11 @@
 #!/bin/bash
 set -eu
 
-if [[ "${1-}" = "shell" ]]; then
+if [[ "${1-}" = "bash" ]]; then
     shift
 
-    echo "****** entrypoint.sh:    executing shell..."
-    exec /bin/sh "$@"
+    echo "****** entrypoint.sh:    executing shell with [$@]"
+    exec /bin/bash "$@"
 
 else
 
