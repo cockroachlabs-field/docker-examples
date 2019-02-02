@@ -8,6 +8,8 @@
 
 FROM maven:3-jdk-8 as benchmark-builder
 
+LABEL maintainer="tjveil@gmail.com"
+
 ARG GIT_BRANCH=maven
 
 RUN mkdir -v /opt/oltpbench \

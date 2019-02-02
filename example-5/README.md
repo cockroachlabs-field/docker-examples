@@ -11,7 +11,8 @@ Demonstrates building and executing the `OLTP-Bench` suite against a 3 node Cock
 ## Getting started
 1) because operation order is important, execute `./run.sh` instead of `docker-compose up`
 2) visit the CockroachDB UI @ http://localhost:8080
-3) have fun!
+3) visit the HAProxy UI @ http://localhost:8081
+4) have fun!
 
 ## Basic Configuration
 The following `environment` variables in `docker-compose.yml` control workload execution...

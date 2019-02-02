@@ -8,6 +8,8 @@
 
 FROM maven:3.5 as ycsb-builder
 
+LABEL maintainer="tjveil@gmail.com"
+
 ARG GIT_BRANCH=master
 
 RUN mkdir -v /opt/ycsb \

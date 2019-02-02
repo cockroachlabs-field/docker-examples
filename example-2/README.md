@@ -16,7 +16,8 @@ Demonstrates backing up a 3 node cluster to a remote file server using NGINX.  R
 1) modify `run.sh` with your `cluster.organization` and `enterprise.license`.
 2) because operation order is important, execute `./run.sh` instead of `docker-compose up`
 3) visit the CockroachDB UI @ http://localhost:8080
-4) have fun!
+4) visit the HAProxy UI @ http://localhost:8081
+5) have fun!
 
 ## Helpful Commands
 
