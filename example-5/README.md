@@ -6,7 +6,7 @@ Demonstrates building and executing the `OLTP-Bench` suite against a 3 node Cock
 * `roach-1` - CockroachDB node
 * `roach-2` - CockroachDB node
 * `lb` - HAProxy acting as load balancer
-* `oltp-bench` - `OLTP-Bench` client container responsible for executing benchmark workload
+* `oltp-bench` - `OLTP-Bench` client container responsible for executing benchmark workloads
 
 ## Getting started
 1) because operation order is important, execute `./run.sh` instead of `docker-compose up`
