@@ -35,7 +35,6 @@ RUN tar -xvf /opt/oltpbench/oltpbench.tgz -C /opt/oltpbench --strip-components=1
 
 COPY crdb_auctionmark_config.xml /opt/oltpbench/config/crdb_auctionmark_config.xml
 COPY crdb_chbenchmark_config.xml /opt/oltpbench/config/crdb_chbenchmark_config.xml
-COPY crdb_chbenchmark_mixed_config.xml /opt/oltpbench/config/crdb_chbenchmark_mixed_config.xml
 COPY crdb_epinions_config.xml /opt/oltpbench/config/crdb_epinions_config.xml
 COPY crdb_linkbench_config.xml /opt/oltpbench/config/crdb_linkbench_config.xml
 COPY crdb_noop_config.xml /opt/oltpbench/config/crdb_noop_config.xml
