@@ -17,4 +17,4 @@ docker-compose exec roach-0 /cockroach/cockroach sql --insecure --execute="CREAT
 docker-compose exec roach-0 /cockroach/cockroach sql --insecure --execute="SET CLUSTER SETTING server.remote_debugging.mode = \"any\";"
 
 echo "starting oltp-bench..."
-docker-compose start oltp-bench
+#docker-compose start oltp-bench
