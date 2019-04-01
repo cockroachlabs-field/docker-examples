@@ -9,7 +9,7 @@ services:
   cockroachdb:
     container_name: cockroachdb
     hostname: cockroachdb
-    image: cockroachdb/cockroach:v2.1.4
+    image: cockroachdb/cockroach:v2.1.6
     networks:
       - roach-net
     command: start --logtostderr --insecure

@@ -15,7 +15,7 @@ services:
   east-1:
     container_name: east-1
     hostname: east-1
-    image: cockroachdb/cockroach:v2.1.4
+    image: cockroachdb/cockroach:v2.1.6
     networks:
       - shared
       - east
@@ -27,7 +27,7 @@ services:
   east-2:
     container_name: east-2
     hostname: east-2
-    image: cockroachdb/cockroach:v2.1.4
+    image: cockroachdb/cockroach:v2.1.6
     networks:
       - shared
       - east
@@ -41,7 +41,7 @@ services:
   east-3:
     container_name: east-3
     hostname: east-3
-    image: cockroachdb/cockroach:v2.1.4
+    image: cockroachdb/cockroach:v2.1.6
     networks:
       - shared
       - east
@@ -56,7 +56,7 @@ services:
   central-1:
     container_name: central-1
     hostname: central-1
-    image: cockroachdb/cockroach:v2.1.4
+    image: cockroachdb/cockroach:v2.1.6
     networks:
       - shared
       - central
@@ -70,7 +70,7 @@ services:
   central-2:
     container_name: central-2
     hostname: central-2
-    image: cockroachdb/cockroach:v2.1.4
+    image: cockroachdb/cockroach:v2.1.6
     networks:
       - shared
       - central
@@ -84,7 +84,7 @@ services:
   central-3:
     container_name: central-3
     hostname: central-3
-    image: cockroachdb/cockroach:v2.1.4
+    image: cockroachdb/cockroach:v2.1.6
     networks:
       - shared
       - central
@@ -99,7 +99,7 @@ services:
   west-1:
     container_name: west-1
     hostname: west-1
-    image: cockroachdb/cockroach:v2.1.4
+    image: cockroachdb/cockroach:v2.1.6
     networks:
       - shared
       - west
@@ -113,7 +113,7 @@ services:
   west-2:
     container_name: west-2
     hostname: west-2
-    image: cockroachdb/cockroach:v2.1.4
+    image: cockroachdb/cockroach:v2.1.6
     networks:
       - shared
       - west
@@ -127,7 +127,7 @@ services:
   west-3:
     container_name: west-3
     hostname: west-3
-    image: cockroachdb/cockroach:v2.1.4
+    image: cockroachdb/cockroach:v2.1.6
     networks:
       - shared
       - west
