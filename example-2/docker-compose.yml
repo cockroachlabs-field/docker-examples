@@ -15,8 +15,6 @@ services:
     image: cockroachdb/cockroach:v2.1.6
     networks:
       - roach-net
-    ports:
-      - "8080:8080"
     command: start --logtostderr --insecure
 
   roach-1:
@@ -47,6 +45,7 @@ services:
       - roach-net
     ports:
       - "5432:5432"
+      - "8080:8080"
       - "8081:8081"
     links:
       - roach-0
