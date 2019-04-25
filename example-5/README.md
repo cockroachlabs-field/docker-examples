@@ -13,7 +13,7 @@ Demonstrates building and executing the `OLTP-Bench` suite against a 3 node Cock
 1) because operation order is important, execute `./run.sh` instead of `docker-compose up`
 2) visit the CockroachDB UI @ http://localhost:8080
 3) visit the HAProxy UI @ http://localhost:8081
-3) visit the PgAdmin UI @ http://localhost:8082
+3) visit the PgAdmin UI @ http://localhost:8082 (username: `test@crdb.io`, password: `password`)
 4) have fun!
 
 ## Basic Configuration
