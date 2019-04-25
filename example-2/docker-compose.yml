@@ -1,9 +1,5 @@
 version: '3.5'
 
-networks:
-  roach-net:
-    driver: bridge
-
 volumes:
   backup:
 
@@ -12,17 +8,13 @@ services:
   roach-0:
     container_name: roach-0
     hostname: roach-0
-    image: cockroachdb/cockroach:v2.1.6
-    networks:
-      - roach-net
+    image: cockroachdb/cockroach:latest
     command: start --logtostderr --insecure
 
   roach-1:
     container_name: roach-1
     hostname: roach-1
-    image: cockroachdb/cockroach:v2.1.6
-    networks:
-      - roach-net
+    image: cockroachdb/cockroach:latest
     command: start --logtostderr --insecure --join=roach-0
     depends_on:
       - roach-0
@@ -30,9 +22,7 @@ services:
   roach-2:
     container_name: roach-2
     hostname: roach-2
-    image: cockroachdb/cockroach:v2.1.6
-    networks:
-      - roach-net
+    image: cockroachdb/cockroach:latest
     command: start --logtostderr --insecure --join=roach-0
     depends_on:
       - roach-0
@@ -41,8 +31,6 @@ services:
     container_name: lb
     hostname: lb
     build: haproxy
-    networks:
-      - roach-net
     ports:
       - "5432:5432"
       - "8080:8080"
@@ -56,8 +44,6 @@ services:
     container_name: fileserver
     hostname: fileserver
     build: fileserver
-    networks:
-      - roach-net
     volumes:
       - backup:/mnt/cockroach-backups
     ports:

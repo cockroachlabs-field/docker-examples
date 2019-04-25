@@ -1,17 +1,11 @@
 version: '3.5'
 
-networks:
-  roach-net:
-    driver: bridge
-
 services:
 
   cockroachdb:
     container_name: cockroachdb
     hostname: cockroachdb
-    image: cockroachdb/cockroach:v2.1.6
-    networks:
-      - roach-net
+    image: cockroachdb/cockroach:latest
     command: start --logtostderr --insecure
     ports:
       - "26257:26257"
@@ -25,8 +19,6 @@ services:
       args:
         - POSTGRESQL_JDBC_VERSION=42.2.5
         - GIT_BRANCH=master
-    networks:
-      - roach-net
     environment:
       - WORKLOAD_NAME=workload-b-cockroach
       - WORKLOAD_TARGET_OPS=100

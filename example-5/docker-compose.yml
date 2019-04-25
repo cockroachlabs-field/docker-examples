@@ -1,25 +1,17 @@
 version: '3.5'
 
-networks:
-  roach-net:
-    driver: bridge
-
 services:
 
   roach-0:
     container_name: roach-0
     hostname: roach-0
     image: cockroachdb/cockroach:latest
-    networks:
-      - roach-net
     command: start --logtostderr --insecure --max-sql-memory=4GB
 
   roach-1:
     container_name: roach-1
     hostname: roach-1
     image: cockroachdb/cockroach:latest
-    networks:
-      - roach-net
     command: start --logtostderr --insecure --join=roach-0 --max-sql-memory=4GB
     depends_on:
       - roach-0
@@ -28,8 +20,6 @@ services:
     container_name: roach-2
     hostname: roach-2
     image: cockroachdb/cockroach:latest
-    networks:
-      - roach-net
     command: start --logtostderr --insecure --join=roach-0 --max-sql-memory=4GB
     depends_on:
       - roach-0
@@ -38,8 +28,6 @@ services:
     container_name: lb
     hostname: lb
     build: haproxy
-    networks:
-      - roach-net
     ports:
       - "5432:5432"
       - "8080:8080"
@@ -70,7 +58,5 @@ services:
     environment:
       - BENCHMARK_NAME=tpcc
       - BENCHMARK_CONFIG_FILE=crdb_tpcc_config.xml
-    networks:
-      - roach-net
     depends_on:
       - lb
