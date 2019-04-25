@@ -9,7 +9,7 @@ services:
   roach-0:
     container_name: roach-0
     hostname: roach-0
-    image: cockroachdb/cockroach:v2.1.6
+    image: cockroachdb/cockroach:latest
     networks:
       - roach-net
     command: start --logtostderr --insecure
@@ -17,7 +17,7 @@ services:
   roach-1:
     container_name: roach-1
     hostname: roach-1
-    image: cockroachdb/cockroach:v2.1.6
+    image: cockroachdb/cockroach:latest
     networks:
       - roach-net
     command: start --logtostderr --insecure --join=roach-0
@@ -27,7 +27,7 @@ services:
   roach-2:
     container_name: roach-2
     hostname: roach-2
-    image: cockroachdb/cockroach:v2.1.6
+    image: cockroachdb/cockroach:latest
     networks:
       - roach-net
     command: start --logtostderr --insecure --join=roach-0
