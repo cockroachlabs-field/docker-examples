@@ -2,19 +2,16 @@
 
 docker-compose build --no-cache
 
-## start source database and load balancer
 docker-compose up --no-start
 docker-compose start roach-0
 docker-compose start roach-1
 docker-compose start roach-2
 docker-compose start lb
+docker-compose start db-ui
 
-echo "waiting for cockroach to initialize..."
 sleep 5
 
-# create backup database
 docker-compose exec roach-0 /cockroach/cockroach sql --insecure --execute="CREATE DATABASE oltpbench;"
 docker-compose exec roach-0 /cockroach/cockroach sql --insecure --execute="SET CLUSTER SETTING server.remote_debugging.mode = \"any\";"
 
-echo "starting oltp-bench..."
 #docker-compose start oltp-bench

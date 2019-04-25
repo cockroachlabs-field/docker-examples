@@ -50,5 +50,6 @@ docker exec -ti roach-0 /bin/bash
 docker exec -ti roach-1 /bin/bash
 docker exec -ti roach-2 /bin/bash
 docker exec -ti lb /bin/sh
+docker exec -ti db-ui /bin/sh
 docker exec -ti oltp-bench /bin/bash
 ```

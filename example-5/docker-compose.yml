@@ -12,8 +12,6 @@ services:
     image: cockroachdb/cockroach:latest
     networks:
       - roach-net
-    ports:
-      - "8080:8080"
     command: start --logtostderr --insecure --max-sql-memory=4GB
 
   roach-1:
@@ -44,11 +42,25 @@ services:
       - roach-net
     ports:
       - "5432:5432"
+      - "8080:8080"
       - "8081:8081"
     links:
       - roach-0
       - roach-1
       - roach-2
+
+  db-ui:
+    container_name: db-ui
+    hostname: db-ui
+    image: dpage/pgadmin4:latest
+    environment:
+      PGADMIN_DEFAULT_EMAIL: test@crdb.io
+      PGADMIN_DEFAULT_PASSWORD: password
+      PGADMIN_LISTEN_PORT: 8082
+    links:
+      - lb
+    ports:
+      - "8082:8082"
 
   oltp-bench:
     container_name: oltp-bench
