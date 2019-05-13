@@ -16,9 +16,9 @@ Simple 3 node CockroachDB cluster with HAProxy acting as load balancer
 ## Helpful Commands
 
 ### Execute SQL
-Use the following to execute arbitrary SQL on the CockroachDB cluster.  The following creates a database called `test`.
+Use the following to execute arbitrary SQL on the CockroachDB cluster.  The following creates a user called `test`.
 ```bash
-docker-compose exec roach-0 /cockroach/cockroach sql --certs-dir=/mnt/certs/roach-0 --host=roach-0 --execute="CREATE USER tv WITH PASSWORD 'password';"
+docker-compose exec roach-0 /cockroach/cockroach sql --certs-dir=/mnt/certs/roach-0 --host=roach-0 --execute="CREATE USER test WITH PASSWORD 'password';"
 ```
 
 ### Open Interactive Shells
@@ -28,6 +28,3 @@ docker exec -ti roach-1 /bin/bash
 docker exec -ti roach-2 /bin/bash
 docker exec -ti lb /bin/sh
 ```
-
-docker-compose exec roach-0 /cockroach/cockroach sql --insecure --execute="SET CLUSTER SETTING cluster.organization = 'tv';"
-docker-compose exec roach-0 /cockroach/cockroach sql --insecure --execute="SET CLUSTER SETTING enterprise.license = 'crl-0-EJzl//IFGAIiAnR2';"

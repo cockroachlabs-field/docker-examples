@@ -36,9 +36,9 @@ RUN cockroach cert create-ca --certs-dir=/mnt/certs/ca --ca-key=/mnt/safe/ca.key
 
 RUN cockroach cert create-client root --certs-dir=/mnt/certs/client --ca-key=/mnt/safe/ca.key
 
-#RUN cp -v /mnt/certs/client/client.* /mnt/certs/roach-0 \
-#    && cp -v /mnt/certs/client/client.* /mnt/certs/roach-1 \
-#    && cp -v /mnt/certs/client/client.* /mnt/certs/roach-2
+RUN cp -v /mnt/certs/client/client.* /mnt/certs/roach-0 \
+    && cp -v /mnt/certs/client/client.* /mnt/certs/roach-1 \
+    && cp -v /mnt/certs/client/client.* /mnt/certs/roach-2
 
 RUN cockroach cert create-node roach-0 172.22.0.100 --certs-dir=/mnt/certs/roach-0 --ca-key=/mnt/safe/ca.key
 RUN cockroach cert create-node roach-1 172.22.0.101 --certs-dir=/mnt/certs/roach-1 --ca-key=/mnt/safe/ca.key

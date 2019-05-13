@@ -73,6 +73,9 @@ services:
     container_name: lb
     hostname: lb
     build: haproxy
+    networks:
+      roach-net:
+        ipv4_address: 172.22.0.2
     ports:
       - "5432:5432"
       - "8080:8080"
