@@ -7,6 +7,13 @@ volumes:
   certs-roach-2:
   safe:
 
+networks:
+  roach-net:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.22.0.0/16
+
 services:
 
   roach-cert:
@@ -24,7 +31,10 @@ services:
     container_name: roach-0
     hostname: roach-0
     image: cockroachdb/cockroach:latest
-    command: start --logtostderr --certs-dir=/mnt/certs/roach-0 --advertise-addr=roach-0 --listen-addr=roach-0
+    command: start --logtostderr --certs-dir=/mnt/certs/roach-0
+    networks:
+      roach-net:
+        ipv4_address: 172.22.0.100
     volumes:
       - safe:/mnt/safe
       - certs-roach-0:/mnt/certs/roach-0
@@ -35,7 +45,10 @@ services:
     container_name: roach-1
     hostname: roach-1
     image: cockroachdb/cockroach:latest
-    command: start --logtostderr --certs-dir=/mnt/certs/roach-1 --advertise-addr=roach-1 --listen-addr=roach-1 --join=roach-0
+    command: start --logtostderr --certs-dir=/mnt/certs/roach-1 --join=roach-0
+    networks:
+      roach-net:
+        ipv4_address: 172.22.0.101
     volumes:
       - safe:/mnt/safe
       - certs-roach-1:/mnt/certs/roach-1
@@ -46,7 +59,10 @@ services:
     container_name: roach-2
     hostname: roach-2
     image: cockroachdb/cockroach:latest
-    command: start --logtostderr --certs-dir=/mnt/certs/roach-2 --advertise-addr=roach-2 --listen-addr=roach-2 --join=roach-0
+    command: start --logtostderr --certs-dir=/mnt/certs/roach-2 --join=roach-0
+    networks:
+      roach-net:
+        ipv4_address: 172.22.0.102
     volumes:
       - safe:/mnt/safe
       - certs-roach-2:/mnt/certs/roach-2
