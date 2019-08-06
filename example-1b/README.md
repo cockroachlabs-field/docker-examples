@@ -28,3 +28,10 @@ docker exec -ti roach-1 /bin/bash
 docker exec -ti roach-2 /bin/bash
 docker exec -ti lb /bin/sh
 ```
+
+### Stop Individual nodes
+```bash
+docker-compose stop roach-0
+docker-compose stop roach-1
+docker-compose stop roach-2
+```
