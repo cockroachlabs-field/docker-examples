@@ -2,7 +2,7 @@
 
 ## Examples
 * [Example 1](example-nginx/README.md) - Simple 3 node cluster with `NGINX`
-* [Example 1b](example-1b/README.md) - Simple 3 node cluster with `HAProxy`
+* [Example 1b](example-haproxy/README.md) - Simple 3 node cluster with `HAProxy`
 * [Example 2](example-2/README.md) - CockroachDB `BACKUP` to `NGINX` based "File Server"
 * [Example 3](example-3/README.md) - Building and running `YCSB` against a 3 node CockroachDB cluster
 * [Example 4](example-4/README.md) - Building and running `YCSB` against a single CockroachDB node
