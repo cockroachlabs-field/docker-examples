@@ -37,19 +37,6 @@ services:
       - roach-1
       - roach-2
 
-  db-ui:
-    container_name: db-ui
-    hostname: db-ui
-    image: dpage/pgadmin4:latest
-    environment:
-      PGADMIN_DEFAULT_EMAIL: test@crdb.io
-      PGADMIN_DEFAULT_PASSWORD: password
-      PGADMIN_LISTEN_PORT: 8082
-    links:
-      - lb
-    ports:
-      - "8082:8082"
-
   oltp-bench:
     container_name: oltp-bench
     hostname: oltp-bench
