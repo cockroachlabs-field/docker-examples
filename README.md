@@ -6,6 +6,7 @@
 * [Enterprise Backup Example](example-enterprise-backup/README.md) - CockroachDB Enterprise `BACKUP` to `NGINX` based "File Server"
 * [YCSB Functional Example](example-ycsb/README.md) - Building and running [YCSB](https://github.com/brianfrankcooper/YCSB) against a 3 node CockroachDB cluster
 * [OLTPBench Functional Example](example-oltpbench/README.md) - Building and running a fork of [OLTPBench](https://github.com/timveil-cockroach/oltpbench) against a 3 node CockroachDB cluster
+* [Secure Cluster Example](example-secure/README.md) - A *secure* 3 node cluster with `HAProxy` as the load balancer
 
 
 ## Useful commands
