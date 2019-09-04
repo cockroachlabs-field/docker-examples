@@ -1,9 +1,15 @@
-FROM debian:9.8-slim
+####################################
+#   Multi-stage build
+#       1. generate certs
+#       2. share certs
+####################################
 
-# todo: make this a multi-stage build where simple final simple node is just a file server
+# Stage 1 - generate certs
+
+FROM debian:9.8-slim as generator
+
 # todo: see if i can fix the slowness.  is this  not specifying correct alias for create-node
 # todo: should secure run under something than 8080
-
 
 LABEL maintainer="tjveil@gmail.com"
 
@@ -13,12 +19,8 @@ ARG CRDB_HOME=/opt/crdb
 
 ENV PATH=$CRDB_HOME:$PATH
 
-# For deployment, we need
-# libc6 - dynamically linked by cockroach binary
-# wget - fetch binary
-# ca-certificates - to authenticate TLS connections for telemetry and
-#                   bulk-io with S3/GCS/Azure
-# tzdata - for time zone functions
+RUN mkdir -pv /tmp/certs/ca /tmp/certs/roach-0 /tmp/certs/roach-1 /tmp/certs/roach-2 /tmp/safe /tmp/certs/client
+
 RUN apt-get update && \
 	apt-get -y upgrade && \
 	apt-get install -y libc6 curl ca-certificates tzdata && \
@@ -31,22 +33,32 @@ RUN mkdir -pv $CRDB_DOWNLOAD_DIR \
     && mv -v $CRDB_DOWNLOAD_DIR /opt \
     && rm -rfv /tmp/crdb.tgz
 
-RUN mkdir -pv /mnt/certs/ca /mnt/certs/client /mnt/certs/roach-0 /mnt/certs/roach-1 /mnt/certs/roach-2 /mnt/safe
+RUN cockroach cert create-ca --certs-dir=/tmp/certs/ca --ca-key=/tmp/safe/ca.key \
+    && cp -v /tmp/certs/ca/ca.crt /tmp/certs/client \
+    && cp -v /tmp/certs/ca/ca.crt /tmp/certs/roach-0 \
+    && cp -v /tmp/certs/ca/ca.crt /tmp/certs/roach-1 \
+    && cp -v /tmp/certs/ca/ca.crt /tmp/certs/roach-2
 
-RUN cockroach cert create-ca --certs-dir=/mnt/certs/ca --ca-key=/mnt/safe/ca.key \
-    && cp -v /mnt/certs/ca/ca.crt /mnt/certs/client \
-    && cp -v /mnt/certs/ca/ca.crt /mnt/certs/roach-0 \
-    && cp -v /mnt/certs/ca/ca.crt /mnt/certs/roach-1 \
-    && cp -v /mnt/certs/ca/ca.crt /mnt/certs/roach-2
+RUN cockroach cert create-client root --certs-dir=/tmp/certs/client --ca-key=/tmp/safe/ca.key
 
-RUN cockroach cert create-client root --certs-dir=/mnt/certs/client --ca-key=/mnt/safe/ca.key
+RUN cp -v /tmp/certs/client/client.* /tmp/certs/roach-0 \
+    && cp -v /tmp/certs/client/client.* /tmp/certs/roach-1 \
+    && cp -v /tmp/certs/client/client.* /tmp/certs/roach-2
 
-RUN cp -v /mnt/certs/client/client.* /mnt/certs/roach-0 \
-    && cp -v /mnt/certs/client/client.* /mnt/certs/roach-1 \
-    && cp -v /mnt/certs/client/client.* /mnt/certs/roach-2
+RUN cockroach cert create-node roach-0 172.22.0.100 localhost 127.0.0.1 lb 172.22.0.2 --certs-dir=/tmp/certs/roach-0 --ca-key=/tmp/safe/ca.key
+RUN cockroach cert create-node roach-1 172.22.0.101 localhost 127.0.0.1 lb 172.22.0.2 --certs-dir=/tmp/certs/roach-1 --ca-key=/tmp/safe/ca.key
+RUN cockroach cert create-node roach-2 172.22.0.102 localhost 127.0.0.1 lb 172.22.0.2 --certs-dir=/tmp/certs/roach-2 --ca-key=/tmp/safe/ca.key
 
-RUN cockroach cert create-node roach-0 172.22.0.100 localhost 127.0.0.1 lb 172.22.0.2 --certs-dir=/mnt/certs/roach-0 --ca-key=/mnt/safe/ca.key
-RUN cockroach cert create-node roach-1 172.22.0.101 localhost 127.0.0.1 lb 172.22.0.2 --certs-dir=/mnt/certs/roach-1 --ca-key=/mnt/safe/ca.key
-RUN cockroach cert create-node roach-2 172.22.0.102 localhost 127.0.0.1 lb 172.22.0.2 --certs-dir=/mnt/certs/roach-2 --ca-key=/mnt/safe/ca.key
+# Stage 2 - share certs
 
+FROM alpine:latest
 
+LABEL maintainer="tjveil@gmail.com"
+
+RUN mkdir -pv /certs/roach-0 /certs/roach-1 /certs/roach-2
+
+COPY --from=generator  /tmp/certs/roach-0/* /certs/roach-0/
+COPY --from=generator  /tmp/certs/roach-1/* /certs/roach-1/
+COPY --from=generator  /tmp/certs/roach-2/* /certs/roach-2/
+
+CMD tail -f /dev/null
