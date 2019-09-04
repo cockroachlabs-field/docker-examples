@@ -11,7 +11,7 @@ Demonstrates building and executing the original YCSB workload against a 3 node 
 * `ycsb` - YCSB client container responsible for executing benchmark workload
 
 ## Getting started
-1) because operation order is important, execute `./run.sh` instead of `docker-compose up`
+1) because operation order is important, execute `./up.sh` instead of `docker-compose up`
 2) visit the CockroachDB UI @ http://localhost:8080
 3) visit the HAProxy UI @ http://localhost:8081
 4) have fun!

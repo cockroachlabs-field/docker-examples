@@ -1,12 +1,11 @@
 # CockroachDB Docker Examples
 
 ## Examples
-* [NGINX Example](example-nginx/README.md) - Simple 3 node cluster with `NGINX`
-* [HAProxy Example](example-haproxy/README.md) - Simple 3 node cluster with `HAProxy`
-* [Enterprise Backup Example](example-enterprise-backup/README.md) - CockroachDB `BACKUP` to `NGINX` based "File Server"
+* [NGINX Example](example-nginx/README.md) - Simple 3 node cluster with `NGINX` as the load balancer
+* [HAProxy Example](example-haproxy/README.md) - Simple 3 node cluster with `HAProxy` as the load balancer
+* [Enterprise Backup Example](example-enterprise-backup/README.md) - CockroachDB Enterprise `BACKUP` to `NGINX` based "File Server"
 * [YCSB Functional Example](example-ycsb/README.md) - Building and running [YCSB](https://github.com/brianfrankcooper/YCSB) against a 3 node CockroachDB cluster
 * [OLTPBench Functional Example](example-oltpbench/README.md) - Building and running a fork of [OLTPBench](https://github.com/timveil-cockroach/oltpbench) against a 3 node CockroachDB cluster
-* [Example 6](example-6/README.md) - 9 node cluster spread across 3 "virtual" data centers 
 
 
 ## Useful commands

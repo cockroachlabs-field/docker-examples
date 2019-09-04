@@ -1,4 +1,4 @@
-# Example 6 - Data Locality
+# Example 6 - Data Locality (ARCHIVED)
 Simple multi-node example that demonstrates basic locality and partitioning concepts across three virtual data centers and a handful of simple tables pinned to different localities.
 
 * `east_only` table is pinned to the `east` data center only
