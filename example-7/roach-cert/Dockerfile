@@ -2,7 +2,7 @@ FROM debian:9.8-slim
 
 LABEL maintainer="tjveil@gmail.com"
 
-ARG CRDB_DOWNLOAD_URL=https://binaries.cockroachdb.com/cockroach-v19.1.0.linux-amd64.tgz
+ARG CRDB_DOWNLOAD_URL=https://binaries.cockroachdb.com/cockroach-v19.1.4.linux-amd64.tgz
 ARG CRDB_DOWNLOAD_DIR=/tmp/crdb
 ARG CRDB_HOME=/opt/crdb
 
@@ -43,3 +43,5 @@ RUN cp -v /mnt/certs/client/client.* /mnt/certs/roach-0 \
 RUN cockroach cert create-node roach-0 172.22.0.100 --certs-dir=/mnt/certs/roach-0 --ca-key=/mnt/safe/ca.key
 RUN cockroach cert create-node roach-1 172.22.0.101 --certs-dir=/mnt/certs/roach-1 --ca-key=/mnt/safe/ca.key
 RUN cockroach cert create-node roach-2 172.22.0.102 --certs-dir=/mnt/certs/roach-2 --ca-key=/mnt/safe/ca.key
+
+
