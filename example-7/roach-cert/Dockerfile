@@ -1,5 +1,10 @@
 FROM debian:9.8-slim
 
+# todo: make this a multi-stage build where simple final simple node is just a file server
+# todo: see if i can fix the slowness.  is this  not specifying correct alias for create-node
+# todo: should secure run under something than 8080
+
+
 LABEL maintainer="tjveil@gmail.com"
 
 ARG CRDB_DOWNLOAD_URL=https://binaries.cockroachdb.com/cockroach-v19.1.4.linux-amd64.tgz
@@ -40,8 +45,8 @@ RUN cp -v /mnt/certs/client/client.* /mnt/certs/roach-0 \
     && cp -v /mnt/certs/client/client.* /mnt/certs/roach-1 \
     && cp -v /mnt/certs/client/client.* /mnt/certs/roach-2
 
-RUN cockroach cert create-node roach-0 172.22.0.100 --certs-dir=/mnt/certs/roach-0 --ca-key=/mnt/safe/ca.key
-RUN cockroach cert create-node roach-1 172.22.0.101 --certs-dir=/mnt/certs/roach-1 --ca-key=/mnt/safe/ca.key
-RUN cockroach cert create-node roach-2 172.22.0.102 --certs-dir=/mnt/certs/roach-2 --ca-key=/mnt/safe/ca.key
+RUN cockroach cert create-node roach-0 172.22.0.100 localhost 127.0.0.1 lb 172.22.0.2 --certs-dir=/mnt/certs/roach-0 --ca-key=/mnt/safe/ca.key
+RUN cockroach cert create-node roach-1 172.22.0.101 localhost 127.0.0.1 lb 172.22.0.2 --certs-dir=/mnt/certs/roach-1 --ca-key=/mnt/safe/ca.key
+RUN cockroach cert create-node roach-2 172.22.0.102 localhost 127.0.0.1 lb 172.22.0.2 --certs-dir=/mnt/certs/roach-2 --ca-key=/mnt/safe/ca.key
 
 

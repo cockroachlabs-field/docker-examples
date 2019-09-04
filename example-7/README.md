@@ -1,5 +1,5 @@
-# Example 1b - Basic CockroachDB Cluster (HAProxy)
-Simple 3 node CockroachDB cluster with HAProxy acting as load balancer
+# Secure CockroachDB Cluster
+Simple 3 node *secure* CockroachDB cluster with HAProxy acting as load balancer
 
 ## Services
 * `roach-0` - CockroachDB node
