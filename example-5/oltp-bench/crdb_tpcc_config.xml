@@ -1,15 +1,19 @@
 <?xml version="1.0"?>
 <parameters>
 
-    <dbtype>COCKROACHDB</dbtype>
+    <!-- Connection details -->
+    <type>COCKROACHDB</type>
     <driver>org.postgresql.Driver</driver>
-    <DBUrl>jdbc:postgresql://lb:5432/oltpbench?sslmode=disable&amp;ApplicationName=tpcc&amp;reWriteBatchedInserts=true</DBUrl>
+    <url>jdbc:postgresql://lb:5432/oltpbench?sslmode=disable&amp;ApplicationName=tpcc&amp;reWriteBatchedInserts=true</url>
     <username>root</username>
     <password></password>
     <isolation>TRANSACTION_SERIALIZABLE</isolation>
+    <batchsize>128</batchsize>
 
+    <!-- Scale factor is the number of warehouses in TPCC -->
     <scalefactor>2</scalefactor>
 
+    <!-- The workload -->
     <terminals>2</terminals>
     <works>
         <work>
@@ -19,6 +23,7 @@
         </work>
     </works>
 
+    <!-- TPCC specific -->
     <transactiontypes>
         <transactiontype>
             <name>NewOrder</name>
