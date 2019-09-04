@@ -1,10 +1,10 @@
-# Example 3 - YCSB Benchmark Test (3 nodes)
-Demonstrates building and executing the YCSB benchmark against a 3 node CockroachDB cluster.  More information on YCSB can be found here: https://github.com/brianfrankcooper/YCSB/wiki.
+# Running Original YCSB Benchmark
+Demonstrates building and executing the original YCSB benchmark against a 3 node CockroachDB cluster.  More information on YCSB can be found here: https://github.com/brianfrankcooper/YCSB/wiki.
 
 ## Services
-* `roach-0` - CockroachDB node
-* `roach-1` - CockroachDB node
-* `roach-2` - CockroachDB node
+* `crdb-0` - CockroachDB node
+* `crdb-1` - CockroachDB node
+* `crdb-2` - CockroachDB node
 * `lb` - HAProxy acting as load balancer
 * `ycsb` - YCSB client container responsible for executing benchmark workload
 
@@ -34,7 +34,7 @@ db.driver=org.postgresql.Driver
 db.url=jdbc:postgresql://lb:5432/ycsb?sslmode=disable&application_name=ycsb&reWriteBatchedInserts=true
 db.user=root
 db.passwd=
-db.batchsize=25
+db.batchsize=128
 jdbc.fetchsize=10
 jdbc.autocommit=true
 jdbc.batchupdateapi=true
@@ -150,14 +150,14 @@ You can also run the following workloads
 ### Execute SQL
 Use the following to execute arbitrary SQL on the CockroachDB cluster.
 ```bash
-docker-compose exec roach-0 /cockroach/cockroach sql --insecure --execute="select count(*) from ycsb.usertable;"
+docker-compose exec crdb-0 /cockroach/cockroach sql --insecure --execute="select count(*) from ycsb.usertable;"
 ```
 
 ### Open Interactive Shells
 ```bash
-docker exec -ti roach-0 /bin/bash
-docker exec -ti roach-1 /bin/bash
-docker exec -ti roach-2 /bin/bash
+docker exec -ti crdb-0 /bin/bash
+docker exec -ti crdb-1 /bin/bash
+docker exec -ti crdb-2 /bin/bash
 docker exec -ti lb /bin/sh
 docker exec -ti ycsb /bin/bash
 ```

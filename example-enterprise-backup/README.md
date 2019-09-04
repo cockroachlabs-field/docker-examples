@@ -1,4 +1,4 @@
-# Enterprise Backup with Remote File Server
+# Enterprise Backup with NGINX File Server
 Demonstrates backing up a 3 node cluster to a remote file server using NGINX.  Relevant documentation can be found here:
 
 * https://www.cockroachlabs.com/docs/stable/backup-and-restore.html
