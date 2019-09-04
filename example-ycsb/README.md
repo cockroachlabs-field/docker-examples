@@ -1,5 +1,7 @@
-# Running Original YCSB Benchmark
-Demonstrates building and executing the original YCSB benchmark against a 3 node CockroachDB cluster.  More information on YCSB can be found here: https://github.com/brianfrankcooper/YCSB/wiki.
+# Running Original YCSB Workload
+Demonstrates building and executing the original YCSB workload against a 3 node CockroachDB cluster.  More information on YCSB can be found here: https://github.com/brianfrankcooper/YCSB/wiki.
+
+> This is included here as a functional example.  This configuration should not be considered the basis for a performance evaluation.
 
 ## Services
 * `crdb-0` - CockroachDB node
