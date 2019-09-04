@@ -7,7 +7,7 @@ FROM debian:9.8-slim
 
 LABEL maintainer="tjveil@gmail.com"
 
-ARG CRDB_DOWNLOAD_URL=https://binaries.cockroachdb.com/cockroach-v19.1.4.linux-amd64.tgz
+ARG CRDB_DOWNLOAD_URL=https://binaries.cockroachdb.com/cockroach-latest.linux-amd64.tgz
 ARG CRDB_DOWNLOAD_DIR=/tmp/crdb
 ARG CRDB_HOME=/opt/crdb
 
