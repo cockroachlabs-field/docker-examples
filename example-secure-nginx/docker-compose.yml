@@ -1,0 +1,80 @@
+version: '3.5'
+
+volumes:
+  certs-roach-0:
+  certs-roach-1:
+  certs-roach-2:
+
+networks:
+  roach-net:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.22.0.0/16
+
+services:
+
+  roach-cert:
+    container_name: roach-cert
+    hostname: roach-cert
+    build: roach-cert
+    volumes:
+      - certs-roach-0:/certs/roach-0
+      - certs-roach-1:/certs/roach-1
+      - certs-roach-2:/certs/roach-2
+
+  roach-0:
+    container_name: roach-0
+    hostname: roach-0
+    image: cockroachdb/cockroach:latest
+    command: start --logtostderr --certs-dir=/certs --listen-addr=172.22.0.100:26257 --advertise-addr=172.22.0.100:26257
+    networks:
+      roach-net:
+        ipv4_address: 172.22.0.100
+    volumes:
+      - certs-roach-0:/certs
+    depends_on:
+      - roach-cert
+
+  roach-1:
+    container_name: roach-1
+    hostname: roach-1
+    image: cockroachdb/cockroach:latest
+    command: start --logtostderr --certs-dir=/certs --join=172.22.0.100 --listen-addr=172.22.0.101:26257 --advertise-addr=172.22.0.101:26257
+    networks:
+      roach-net:
+        ipv4_address: 172.22.0.101
+    volumes:
+      - certs-roach-1:/certs
+    depends_on:
+      - roach-cert
+      - roach-0
+
+  roach-2:
+    container_name: roach-2
+    hostname: roach-2
+    image: cockroachdb/cockroach:latest
+    command: start --logtostderr --certs-dir=/certs --join=172.22.0.100 --listen-addr=172.22.0.102:26257 --advertise-addr=172.22.0.102:26257
+    networks:
+      roach-net:
+        ipv4_address: 172.22.0.102
+    volumes:
+      - certs-roach-2:/certs
+    depends_on:
+      - roach-cert
+      - roach-0
+
+  lb:
+    container_name: lb
+    hostname: lb
+    build: nginx
+    networks:
+      roach-net:
+        ipv4_address: 172.22.0.2
+    ports:
+      - "5432:5432"
+      - "8080:8080"
+    depends_on:
+      - roach-0
+      - roach-1
+      - roach-2
