@@ -8,7 +8,9 @@
 
 FROM debian:9.8-slim as generator
 
-# todo: see if i can fix the slowness.  is this  not specifying correct alias for create-node
+ARG DEBIAN_FRONTEND=noninteractive
+
+# todo: see if i can fix the slowness.  is this not specifying correct alias for create-node
 # todo: should secure run under something than 8080
 
 LABEL maintainer="tjveil@gmail.com"
@@ -21,9 +23,10 @@ ENV PATH=$CRDB_HOME:$PATH
 
 RUN mkdir -pv /tmp/certs/ca /tmp/certs/roach-0 /tmp/certs/roach-1 /tmp/certs/roach-2 /tmp/safe /tmp/certs/client
 
-RUN apt-get update && \
-	apt-get -y upgrade && \
-	apt-get install -y libc6 curl ca-certificates tzdata && \
+RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
+
+RUN apt-get upgrade -y && \
+    apt-get install -y libc6 curl ca-certificates tzdata && \
 	rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -pv $CRDB_DOWNLOAD_DIR \
