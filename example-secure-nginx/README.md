@@ -5,12 +5,14 @@ Simple 3 node *secure* CockroachDB cluster with HAProxy acting as load balancer
 * `roach-0` - CockroachDB node
 * `roach-1` - CockroachDB node
 * `roach-2` - CockroachDB node
-* `lb` - HAProxy acting as load balancer
+* `lb` - NGINX acting as load balancer
+* `roach-cert` - Holds certificates as volume mounts
 
 ## Getting started
+*If you are using Google Chrome as your browser, you may want to navigate here `chrome://flags/#allow-insecure-localhost` and set this flag to `Enabled`*. 
+
 1) because operation order is important, execute `./up.sh` instead of `docker-compose up`
 2) visit the CockroachDB UI @ https://localhost:8080 and login with username `test` and password `password`
-2) visit the HAProxy UI @ http://localhost:8081
 3) have fun!
 
 ## Helpful Commands
