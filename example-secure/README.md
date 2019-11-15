@@ -21,13 +21,13 @@ Simple 3 node *secure* CockroachDB cluster with HAProxy acting as load balancer
 ### Create User
 The following creates a user called `test` with password `password`.  This can be used to login to the CockroachDB UI.
 ```bash
-docker-compose exec roach-0 /cockroach/cockroach sql --certs-dir=/mnt/certs/roach-0 --host=roach-0 --execute="CREATE USER test WITH PASSWORD 'password';"
+docker-compose exec roach-0 /cockroach/cockroach sql --certs-dir=/certs --host=roach-0 --execute="CREATE USER test WITH PASSWORD 'password';"
 ```
 
 ### Create Database
 The following creates a database called `test`.
 ```bash
-docker-compose exec roach-0 /cockroach/cockroach sql --certs-dir=/mnt/certs/roach-0 --host=roach-0 --execute="CREATE DATABASE test;"
+docker-compose exec roach-0 /cockroach/cockroach sql --certs-dir=/certs --host=roach-0 --execute="CREATE DATABASE test;"
 ```
 
 ### Open Interactive Shells
