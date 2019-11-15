@@ -21,6 +21,19 @@ Use the following to execute arbitrary SQL on the CockroachDB cluster.  The foll
 docker-compose exec crdb-0 /cockroach/cockroach sql --insecure --execute="CREATE DATABASE test;"
 ```
 
+### Initialize and Run the TPC-C Workload
+Use the following commands to initialize and run the `tpcc` sample `workload`.  For more details see [this](https://www.cockroachlabs.com/docs/stable/cockroach-workload.html#run-the-tpcc-workload).
+
+to initialize...
+```bash
+docker-compose exec crdb-0 /cockroach/cockroach workload init tpcc "postgresql://root@localhost:26257?sslmode=disable"
+```
+
+to run for `10m`...
+```bash
+docker-compose exec crdb-0 /cockroach/cockroach workload run tpcc --duration=10m "postgresql://root@localhost:26257?sslmode=disable"
+```
+
 ### Open Interactive Shells
 ```bash
 docker exec -ti crdb-0 /bin/bash
