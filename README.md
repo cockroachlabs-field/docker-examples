@@ -18,7 +18,7 @@ Generate `debug.zip` file on `crdb-0`.  For more details see https://www.cockroa
 docker-compose exec crdb-0 /cockroach/cockroach debug zip ./cockroach-data/logs/debug.zip --insecure
 ```
 
-Copy `debug.zip` from `crdb-0` to current local director
+Copy `debug.zip` from `crdb-0` to current local directory
 ```bash
 docker cp crdb-0:/cockroach/cockroach-data/logs/debug.zip .
 ```
