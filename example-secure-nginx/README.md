@@ -1,11 +1,13 @@
 # Secure CockroachDB Cluster
-Simple 3 node *secure* CockroachDB cluster with HAProxy acting as load balancer
+Simple 3 node *secure* CockroachDB cluster with NGINX acting as load balancer
+
+#### todo: remove ip's from this example
 
 ## Services
 * `roach-0` - CockroachDB node
 * `roach-1` - CockroachDB node
 * `roach-2` - CockroachDB node
-* `lb` - HAProxy acting as load balancer
+* `lb` - NGINX acting as load balancer
 * `roach-cert` - Holds certificates as volume mounts
 
 ## Getting started
@@ -13,8 +15,7 @@ Simple 3 node *secure* CockroachDB cluster with HAProxy acting as load balancer
 
 1) because operation order is important, execute `./up.sh` instead of `docker-compose up`
 2) visit the CockroachDB UI @ https://localhost:8080 and login with username `test` and password `password`
-3) visit the HAProxy UI @ http://localhost:8081
-4) have fun!
+3) have fun!
 
 ## Helpful Commands
 
@@ -36,5 +37,4 @@ docker exec -ti roach-0 /bin/bash
 docker exec -ti roach-1 /bin/bash
 docker exec -ti roach-2 /bin/bash
 docker exec -ti lb /bin/sh
-docker exec -ti roach-cert /bin/sh
 ```

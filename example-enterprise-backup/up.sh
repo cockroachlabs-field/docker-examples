@@ -4,12 +4,12 @@ CRDB_ORG=$1
 CRDB_LICENSE_KEY=$2
 
 if [[ -z "$CRDB_ORG" ]]; then
-    echo "Must provide CRDB_ORG as the first parameter. Example './run.sh CRDB_ORG CRDB_LICENSE_KEY'." 1>&2
+    echo "Must provide CRDB_ORG as the first parameter. Example './up.sh CRDB_ORG CRDB_LICENSE_KEY'." 1>&2
     exit 1
 fi
 
 if [[ -z "$CRDB_LICENSE_KEY" ]]; then
-    echo "Must provide CRDB_LICENSE_KEY as the second parameter. Example './run.sh CRDB_ORG CRDB_LICENSE_KEY'." 1>&2
+    echo "Must provide CRDB_LICENSE_KEY as the second parameter. Example './up.sh CRDB_ORG CRDB_LICENSE_KEY'." 1>&2
     exit 1
 fi
 

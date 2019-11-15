@@ -1,4 +1,4 @@
-FROM haproxy:alpine
+FROM haproxy:latest
 
 LABEL maintainer="tjveil@gmail.com"
 

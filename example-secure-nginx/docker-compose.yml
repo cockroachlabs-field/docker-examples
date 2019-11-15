@@ -5,6 +5,13 @@ volumes:
   certs-roach-1:
   certs-roach-2:
 
+networks:
+  roach-net:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.22.0.0/16
+
 services:
 
   roach-cert:
@@ -20,7 +27,10 @@ services:
     container_name: roach-0
     hostname: roach-0
     image: cockroachdb/cockroach:latest
-    command: start --logtostderr=WARNING --certs-dir=/certs --listen-addr=roach-0:26257 --advertise-addr=roach-0:26257
+    command: start --logtostderr --certs-dir=/certs --listen-addr=172.22.0.100:26257 --advertise-addr=172.22.0.100:26257
+    networks:
+      roach-net:
+        ipv4_address: 172.22.0.100
     volumes:
       - certs-roach-0:/certs
     depends_on:
@@ -30,7 +40,10 @@ services:
     container_name: roach-1
     hostname: roach-1
     image: cockroachdb/cockroach:latest
-    command: start --logtostderr=WARNING --certs-dir=/certs --join=roach-0 --listen-addr=roach-1:26257 --advertise-addr=roach-1:26257
+    command: start --logtostderr --certs-dir=/certs --join=172.22.0.100 --listen-addr=172.22.0.101:26257 --advertise-addr=172.22.0.101:26257
+    networks:
+      roach-net:
+        ipv4_address: 172.22.0.101
     volumes:
       - certs-roach-1:/certs
     depends_on:
@@ -41,7 +54,10 @@ services:
     container_name: roach-2
     hostname: roach-2
     image: cockroachdb/cockroach:latest
-    command: start --logtostderr=WARNING --certs-dir=/certs --join=roach-0 --listen-addr=roach-2:26257 --advertise-addr=roach-2:26257
+    command: start --logtostderr --certs-dir=/certs --join=172.22.0.100 --listen-addr=172.22.0.102:26257 --advertise-addr=172.22.0.102:26257
+    networks:
+      roach-net:
+        ipv4_address: 172.22.0.102
     volumes:
       - certs-roach-2:/certs
     depends_on:
@@ -51,11 +67,13 @@ services:
   lb:
     container_name: lb
     hostname: lb
-    build: haproxy
+    build: nginx
+    networks:
+      roach-net:
+        ipv4_address: 172.22.0.2
     ports:
       - "5432:5432"
       - "8080:8080"
-      - "8081:8081"
     depends_on:
       - roach-0
       - roach-1

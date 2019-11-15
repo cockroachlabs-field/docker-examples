@@ -21,21 +21,11 @@ This distribution can be verified by the SQL commands below or via the UI... htt
 * `west-3` - CockroachDB node in `west` data center
 
 ## Getting started
-1) because operation order is important, execute `./run.sh` instead of `docker-compose up`
+1) because operation order is important, execute `./up.sh` instead of `docker-compose up`
 2) visit the CockroachDB UI @ http://localhost:8001
 3) have fun!
 
 ## Helpful Commands
-
-### Show Ranges
-Ranges and data distribution can be viewed in the UI here (http://localhost:8001/#/data-distribution) or via the following commands:
-```bash
-docker-compose exec east-1 /cockroach/cockroach sql --insecure --execute="SHOW EXPERIMENTAL_RANGES FROM TABLE example6.east_only;"
-docker-compose exec east-1 /cockroach/cockroach sql --insecure --execute="SHOW EXPERIMENTAL_RANGES FROM TABLE example6.central_only;"
-docker-compose exec east-1 /cockroach/cockroach sql --insecure --execute="SHOW EXPERIMENTAL_RANGES FROM TABLE example6.west_only;"
-docker-compose exec east-1 /cockroach/cockroach sql --insecure --execute="SHOW EXPERIMENTAL_RANGES FROM TABLE example6.east_central;"
-docker-compose exec east-1 /cockroach/cockroach sql --insecure --execute="SHOW EXPERIMENTAL_RANGES FROM TABLE example6.central_west;"
-```
 
 ### Open Interactive Shells
 ```bash
@@ -48,12 +38,5 @@ docker exec -ti central-3 /bin/bash
 docker exec -ti west-1 /bin/bash
 docker exec -ti west-2 /bin/bash
 docker exec -ti west-3 /bin/bash
-```
-
-### Enable Enterprise License
-Use the following commands to enable your enterprise license.  Obviously replace `CHANGE_ME` with your information.
-```bash
-docker-compose exec east-1 /cockroach/cockroach sql --insecure --execute="SET CLUSTER SETTING cluster.organization = 'CHANGE_ME';"
-docker-compose exec east-1 /cockroach/cockroach sql --insecure --execute="SET CLUSTER SETTING enterprise.license = 'CHANGE_ME';"
 ```
 
