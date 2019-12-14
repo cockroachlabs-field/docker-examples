@@ -19,7 +19,7 @@ services:
     networks:
       - shared
       - east
-    command: start --logtostderr --insecure --locality=datacenter=east
+    command: start --logtostderr=WARNING --log-file-verbosity=WARNING --insecure --locality=datacenter=east
     ports:
       - 8001:8080
       - 9001:26257
@@ -31,7 +31,7 @@ services:
     networks:
       - shared
       - east
-    command: start --logtostderr --insecure --locality=datacenter=east --join=east-1
+    command: start --logtostderr=WARNING --log-file-verbosity=WARNING --insecure --locality=datacenter=east --join=east-1
     ports:
       - 8002:8080
       - 9002:26257
@@ -45,7 +45,7 @@ services:
     networks:
       - shared
       - east
-    command: start --logtostderr --insecure --locality=datacenter=east --join=east-1
+    command: start --logtostderr=WARNING --log-file-verbosity=WARNING --insecure --locality=datacenter=east --join=east-1
     ports:
       - 8003:8080
       - 9003:26257
@@ -60,7 +60,7 @@ services:
     networks:
       - shared
       - central
-    command: start --logtostderr --insecure --locality=datacenter=central --join=east-1
+    command: start --logtostderr=WARNING --log-file-verbosity=WARNING --insecure --locality=datacenter=central --join=east-1
     ports:
       - 8004:8080
       - 9004:26257
@@ -74,7 +74,7 @@ services:
     networks:
       - shared
       - central
-    command: start --logtostderr --insecure --locality=datacenter=central --join=east-1
+    command: start --logtostderr=WARNING --log-file-verbosity=WARNING --insecure --locality=datacenter=central --join=east-1
     ports:
       - 8005:8080
       - 9005:26257
@@ -88,7 +88,7 @@ services:
     networks:
       - shared
       - central
-    command: start --logtostderr --insecure --locality=datacenter=central --join=east-1
+    command: start --logtostderr=WARNING --log-file-verbosity=WARNING --insecure --locality=datacenter=central --join=east-1
     ports:
       - 8006:8080
       - 9006:26257
@@ -103,7 +103,7 @@ services:
     networks:
       - shared
       - west
-    command: start --logtostderr --insecure --locality=datacenter=west --join=east-1
+    command: start --logtostderr=WARNING --log-file-verbosity=WARNING --insecure --locality=datacenter=west --join=east-1
     ports:
       - 8007:8080
       - 9007:26257
@@ -117,7 +117,7 @@ services:
     networks:
       - shared
       - west
-    command: start --logtostderr --insecure --locality=datacenter=west --join=east-1
+    command: start --logtostderr=WARNING --log-file-verbosity=WARNING --insecure --locality=datacenter=west --join=east-1
     ports:
       - 8008:8080
       - 9008:26257
@@ -131,7 +131,7 @@ services:
     networks:
       - shared
       - west
-    command: start --logtostderr --insecure --locality=datacenter=west --join=east-1
+    command: start --logtostderr=WARNING --log-file-verbosity=WARNING --insecure --locality=datacenter=west --join=east-1
     ports:
       - 8009:8080
       - 9009:26257

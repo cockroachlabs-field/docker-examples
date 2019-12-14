@@ -27,7 +27,7 @@ services:
     container_name: roach-0
     hostname: roach-0
     image: cockroachdb/cockroach:latest
-    command: start --logtostderr --certs-dir=/certs --listen-addr=172.22.0.100:26257 --advertise-addr=172.22.0.100:26257
+    command: start --logtostderr=WARNING --log-file-verbosity=WARNING --certs-dir=/certs --listen-addr=172.22.0.100:26257 --advertise-addr=172.22.0.100:26257
     networks:
       roach-net:
         ipv4_address: 172.22.0.100
@@ -40,7 +40,7 @@ services:
     container_name: roach-1
     hostname: roach-1
     image: cockroachdb/cockroach:latest
-    command: start --logtostderr --certs-dir=/certs --join=172.22.0.100 --listen-addr=172.22.0.101:26257 --advertise-addr=172.22.0.101:26257
+    command: start --logtostderr=WARNING --log-file-verbosity=WARNING --certs-dir=/certs --join=172.22.0.100 --listen-addr=172.22.0.101:26257 --advertise-addr=172.22.0.101:26257
     networks:
       roach-net:
         ipv4_address: 172.22.0.101
@@ -54,7 +54,7 @@ services:
     container_name: roach-2
     hostname: roach-2
     image: cockroachdb/cockroach:latest
-    command: start --logtostderr --certs-dir=/certs --join=172.22.0.100 --listen-addr=172.22.0.102:26257 --advertise-addr=172.22.0.102:26257
+    command: start --logtostderr=WARNING --log-file-verbosity=WARNING --certs-dir=/certs --join=172.22.0.100 --listen-addr=172.22.0.102:26257 --advertise-addr=172.22.0.102:26257
     networks:
       roach-net:
         ipv4_address: 172.22.0.102
