@@ -38,3 +38,10 @@ docker exec -ti roach-2 /bin/bash
 docker exec -ti lb /bin/sh
 docker exec -ti roach-cert /bin/sh
 ```
+
+### Copy Client Certificate and Key
+```bash
+docker cp roach-cert:/certs/client/client.root.crt .
+docker cp roach-cert:/certs/client/client.root.key .
+docker cp roach-cert:/certs/client/client.root.key.pk8 .
+```
