@@ -1,3 +1,7 @@
 *.iml
 
 .idea
+
+*.crt
+*.key
+*.pk8
