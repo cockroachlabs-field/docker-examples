@@ -16,17 +16,11 @@ Simple 3 node CockroachDB cluster with HAProxy acting as load balancer
 
 ## Helpful Commands
 
-### Execute SQL
-Use the following to execute arbitrary SQL on the CockroachDB cluster.  The following creates a database called `test`.
-```bash
-docker-compose exec crdb-0 /cockroach/cockroach sql --insecure --execute="CREATE DATABASE test;"
-```
-
 ### Run the TPC-C Workload
 Use the following command to run the `tpcc` sample `workload` for 10 minutes.  For more details see [this](https://www.cockroachlabs.com/docs/stable/cockroach-workload.html#run-the-tpcc-workload).
 
 ```bash
-docker-compose exec workload-client /cockroach/cockroach workload run tpcc --duration=10m "postgresql://root@lb:5432?sslmode=disable"
+docker-compose exec workload-client /cockroach/cockroach workload run tpcc --tolerate-errors --duration=10m "postgresql://root@lb:5432?sslmode=disable"
 ```
 
 ### Open Interactive Shells
