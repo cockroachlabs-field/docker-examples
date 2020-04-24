@@ -1,0 +1,46 @@
+version: '3.5'
+
+services:
+
+  crdb-0:
+    container_name: crdb-0
+    hostname: crdb-0
+    image: cockroachdb/cockroach:latest
+    command: start --logtostderr=WARNING --log-file-verbosity=WARNING --insecure
+
+  crdb-1:
+    container_name: crdb-1
+    hostname: crdb-1
+    image: cockroachdb/cockroach:latest
+    command: start --logtostderr=WARNING --log-file-verbosity=WARNING --insecure --join=crdb-0
+    depends_on:
+      - crdb-0
+
+  crdb-2:
+    container_name: crdb-2
+    hostname: crdb-2
+    image: cockroachdb/cockroach:latest
+    command: start --logtostderr=WARNING --log-file-verbosity=WARNING --insecure --join=crdb-0
+    depends_on:
+      - crdb-0
+
+  lb:
+    container_name: lb
+    hostname: lb
+    build: haproxy
+    ports:
+      - "5432:5432"
+      - "8080:8080"
+      - "8081:8081"
+    links:
+      - crdb-0
+      - crdb-1
+      - crdb-2
+
+  workload-client:
+    container_name: workload-client
+    hostname: workload-client
+    image: cockroachdb/cockroach:latest
+    entrypoint: ["tail", "-f", "/dev/null"]
+    depends_on:
+      - lb
