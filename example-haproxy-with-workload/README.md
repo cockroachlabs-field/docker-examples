@@ -20,7 +20,7 @@ Simple 3 node CockroachDB cluster with HAProxy acting as load balancer
 While `.up.sh` will automatically initialize and run the `tpcc` workload,  you can use the following command to restart the `tpcc` sample `workload` for 10 minutes.  For more details see [this](https://www.cockroachlabs.com/docs/stable/cockroach-workload.html#run-the-tpcc-workload).
 
 ```bash
-docker-compose exec workload-client /cockroach/cockroach workload run tpcc --tolerate-errors --duration=10m "postgresql://root@lb:5432?sslmode=disable"
+docker-compose exec workload-client /cockroach/cockroach workload run tpcc --tolerate-errors --warehouses=3 --duration=10m "postgresql://root@lb:5432?sslmode=disable"
 ```
 
 ### Open Interactive Shells
