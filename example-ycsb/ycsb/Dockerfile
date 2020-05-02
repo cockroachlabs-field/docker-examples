@@ -16,7 +16,7 @@ RUN mkdir -v /opt/ycsb \
     && git clone https://github.com/brianfrankcooper/YCSB.git /opt/ycsb \
     && cd /opt/ycsb \
     && git checkout -f ${GIT_BRANCH} \
-    && mvn -pl com.yahoo.ycsb:jdbc-binding -am clean package -DskipTests=true
+    && mvn -pl site.ycsb:jdbc-binding -am clean package -DskipTests=true
 
 
 # Stage 2 - Build YCSB client

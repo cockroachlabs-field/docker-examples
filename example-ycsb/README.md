@@ -8,6 +8,7 @@ Demonstrates building and executing the original YCSB workload against a 3 node 
 * `crdb-1` - CockroachDB node
 * `crdb-2` - CockroachDB node
 * `lb` - HAProxy acting as load balancer
+* `crdb-init` - Executes some commands against CockroachDB and shuts down. See [here](https://github.com/timveil-cockroach/cockroachdb-remote-client).
 * `ycsb` - YCSB client container responsible for executing benchmark workload
 
 ## Getting started
@@ -46,9 +47,9 @@ jdbc.batchupdateapi=true
 
 #### workload-a-cockroach
 ```properties
-recordcount=20000
+recordcount=1000
 operationcount=1000
-workload=com.yahoo.ycsb.workloads.CoreWorkload
+workload=site.ycsb.workloads.CoreWorkload
 
 readallfields=true
 
@@ -62,9 +63,9 @@ requestdistribution=zipfian
 
 #### workload-b-cockroach (default)
 ```properties
-recordcount=20000
+recordcount=1000
 operationcount=1000
-workload=com.yahoo.ycsb.workloads.CoreWorkload
+workload=site.ycsb.workloads.CoreWorkload
 
 readallfields=true
 
@@ -78,9 +79,9 @@ requestdistribution=zipfan
 
 #### workload-c-cockroach
 ```properties
-recordcount=20000
+recordcount=1000
 operationcount=1000
-workload=com.yahoo.ycsb.workloads.CoreWorkload
+workload=site.ycsb.workloads.CoreWorkload
 
 readallfields=true
 
@@ -94,9 +95,9 @@ requestdistribution=zipfian
 
 #### workload-d-cockroach
 ```properties
-recordcount=20000
+recordcount=1000
 operationcount=1000
-workload=com.yahoo.ycsb.workloads.CoreWorkload
+workload=site.ycsb.workloads.CoreWorkload
 
 readallfields=true
 
@@ -110,9 +111,9 @@ requestdistribution=latest
 
 #### workload-e-cockroach
 ```properties
-recordcount=20000
+recordcount=1000
 operationcount=1000
-workload=com.yahoo.ycsb.workloads.CoreWorkload
+workload=site.ycsb.workloads.CoreWorkload
 
 readallfields=true
 
@@ -130,9 +131,9 @@ scanlengthdistribution=uniform
 
 #### workload-f-cockroach
 ```properties
-recordcount=20000
+recordcount=1000
 operationcount=1000
-workload=com.yahoo.ycsb.workloads.CoreWorkload
+workload=site.ycsb.workloads.CoreWorkload
 
 readallfields=true
 
