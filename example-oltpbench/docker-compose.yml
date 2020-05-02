@@ -37,6 +37,17 @@ services:
       - crdb-1
       - crdb-2
 
+  crdb-init:
+    container_name: crdb-init
+    hostname: crdb-init
+    image: timveil/cockroachdb-remote-client:latest
+    environment:
+      - COCKROACH_HOST=lb:5432
+      - COCKROACH_INSECURE=true
+      - DATABASE_NAME=oltpbench
+    depends_on:
+      - lb
+
   oltp-bench:
     container_name: oltp-bench
     hostname: oltp-bench
@@ -46,4 +57,4 @@ services:
       - BENCHMARK_NAME=tpcc
       - BENCHMARK_CONFIG_FILE=crdb_tpcc_config.xml
     depends_on:
-      - lb
+      - crdb-init

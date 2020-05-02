@@ -7,10 +7,8 @@ docker-compose start crdb-0
 docker-compose start crdb-1
 docker-compose start crdb-2
 docker-compose start lb
+docker-compose start crdb-init
 
 sleep 5
-
-docker-compose exec crdb-0 /cockroach/cockroach sql --insecure --execute="CREATE DATABASE oltpbench;"
-docker-compose exec crdb-0 /cockroach/cockroach sql --insecure --execute="SET CLUSTER SETTING server.remote_debugging.mode = \"any\";"
 
 docker-compose start oltp-bench
