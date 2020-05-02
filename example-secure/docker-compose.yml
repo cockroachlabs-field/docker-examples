@@ -4,6 +4,7 @@ volumes:
   certs-roach-0:
   certs-roach-1:
   certs-roach-2:
+  certs-client:
 
 services:
 
@@ -15,6 +16,7 @@ services:
       - certs-roach-0:/certs/roach-0
       - certs-roach-1:/certs/roach-1
       - certs-roach-2:/certs/roach-2
+      - certs-client:/certs/client
 
   roach-0:
     container_name: roach-0
@@ -60,3 +62,20 @@ services:
       - roach-0
       - roach-1
       - roach-2
+
+  roach-init:
+    container_name: roach-init
+    hostname: roach-init
+    image: timveil/cockroachdb-remote-client:latest
+    environment:
+      - COCKROACH_HOST=lb:5432
+      - COCKROACH_INSECURE=false
+      - COCKROACH_CERTS_DIR=/certs
+      - DATABASE_NAME=test
+      - DATABASE_USER=test
+      - DATABASE_PASSWORD=password
+    volumes:
+      - certs-client:/certs
+    depends_on:
+      - lb
+      - roach-cert
