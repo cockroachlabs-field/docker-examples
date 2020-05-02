@@ -6,13 +6,6 @@ volumes:
   certs-roach-2:
   certs-client:
 
-networks:
-  roach-net:
-    ipam:
-      driver: default
-      config:
-        - subnet: 172.22.0.0/16
-
 services:
 
   roach-cert:
@@ -29,10 +22,7 @@ services:
     container_name: roach-0
     hostname: roach-0
     image: cockroachdb/cockroach:latest
-    command: start --logtostderr=WARNING --log-file-verbosity=WARNING --certs-dir=/certs --listen-addr=172.22.0.100:26257 --advertise-addr=172.22.0.100:26257
-    networks:
-      roach-net:
-        ipv4_address: 172.22.0.100
+    command: start --logtostderr=WARNING --log-file-verbosity=WARNING --certs-dir=/certs
     volumes:
       - certs-roach-0:/certs
     depends_on:
@@ -42,10 +32,7 @@ services:
     container_name: roach-1
     hostname: roach-1
     image: cockroachdb/cockroach:latest
-    command: start --logtostderr=WARNING --log-file-verbosity=WARNING --certs-dir=/certs --join=172.22.0.100 --listen-addr=172.22.0.101:26257 --advertise-addr=172.22.0.101:26257
-    networks:
-      roach-net:
-        ipv4_address: 172.22.0.101
+    command: start --logtostderr=WARNING --log-file-verbosity=WARNING --certs-dir=/certs --join=roach-0
     volumes:
       - certs-roach-1:/certs
     depends_on:
@@ -56,10 +43,7 @@ services:
     container_name: roach-2
     hostname: roach-2
     image: cockroachdb/cockroach:latest
-    command: start --logtostderr=WARNING --log-file-verbosity=WARNING --certs-dir=/certs --join=172.22.0.100 --listen-addr=172.22.0.102:26257 --advertise-addr=172.22.0.102:26257
-    networks:
-      roach-net:
-        ipv4_address: 172.22.0.102
+    command: start --logtostderr=WARNING --log-file-verbosity=WARNING --certs-dir=/certs --join=roach-0
     volumes:
       - certs-roach-2:/certs
     depends_on:
@@ -70,9 +54,6 @@ services:
     container_name: lb
     hostname: lb
     build: nginx
-    networks:
-      roach-net:
-        ipv4_address: 172.22.0.2
     ports:
       - "5432:5432"
       - "8080:8080"
@@ -95,9 +76,6 @@ services:
       - DATABASE_PASSWORD=password
     volumes:
       - certs-client:/certs
-    networks:
-      roach-net:
-        ipv4_address: 172.22.0.3
     depends_on:
       - lb
       - roach-cert
