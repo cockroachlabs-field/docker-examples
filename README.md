@@ -9,6 +9,7 @@
 * [OLTPBench Functional Example](example-oltpbench/README.md) - Building and running a fork of [OLTPBench](https://github.com/timveil-cockroach/oltpbench) against a 3 node CockroachDB cluster
 * [Secure Cluster Example - HAProxy](example-secure/README.md) - A **secure** 3 node cluster with `HAProxy` as the load balancer
 * [Secure Cluster Example - NGINIX](example-secure-nginx/README.md) - A **secure** 3 node cluster with `NGINIX` as the load balancer
+* [Single Node Example](example-single-node/README.md) - Single node CockroachDB instance
 
 
 ## Useful commands
