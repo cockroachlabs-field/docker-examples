@@ -1,5 +1,5 @@
 # Enterprise Backup with NGINX File Server
-Demonstrates backing up a 3 node cluster to a remote file server using NGINX.  Relevant documentation can be found here:
+Demonstrates backing up a 3 node cluster to a remote file server using NGINX.  The relevant documentation can be found here:
 
 * https://www.cockroachlabs.com/docs/stable/backup-and-restore.html
 * https://www.cockroachlabs.com/docs/stable/backup.html
@@ -13,7 +13,7 @@ Demonstrates backing up a 3 node cluster to a remote file server using NGINX.  R
 * `fileserver` - NGINX acting as remote file server
 
 ## Getting started
-1) because operation order is important, execute `./up.sh CRDB_ORG CRDB_LICENSE_KEY` instead of `docker-compose up` where `CRDB_ORG` is and `CRDB_LICENSE_KEY` is    
+1) because operation order is important, execute `./up.sh CRDB_ORG CRDB_LICENSE_KEY` instead of `docker-compose up` where `CRDB_ORG` is your CockroachDB Enterprise License Organization and `CRDB_LICENSE_KEY` is your CockroachDB Enterprise License Key.   
 2) visit the CockroachDB UI @ http://localhost:8080
 3) visit the HAProxy UI @ http://localhost:8081
 4) have fun!
