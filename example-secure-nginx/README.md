@@ -14,7 +14,7 @@ Simple 3 node *secure* CockroachDB cluster with NGINX acting as load balancer
 ## Getting started
 >If you are using Google Chrome as your browser, you may want to navigate here `chrome://flags/#allow-insecure-localhost` and set this flag to `Enabled`. 
 
-1) because operation order is important, execute `./up.sh` instead of `docker-compose up`
+1) execute `./up.sh` to start the cluster
 2) visit the CockroachDB UI @ https://localhost:8080 and login with username `test` and password `password`
 3) have fun!
 
