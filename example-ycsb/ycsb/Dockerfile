@@ -25,7 +25,7 @@ FROM openjdk:8-jdk-slim
 
 LABEL maintainer="tjveil@gmail.com"
 
-ARG POSTGRESQL_JDBC_VERSION=42.2.5
+ARG POSTGRESQL_JDBC_VERSION=42.2.12
 
 RUN apt-get update \
     && apt-get install -y python curl \

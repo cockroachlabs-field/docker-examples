@@ -54,7 +54,7 @@ services:
     build:
       context: ycsb
       args:
-        - POSTGRESQL_JDBC_VERSION=42.2.6
+        - POSTGRESQL_JDBC_VERSION=42.2.12
         - GIT_BRANCH=master
     environment:
       - WORKLOAD_NAME=workload-b-cockroach

@@ -27,7 +27,7 @@ The following `environment` variables in `docker-compose.yml` control workload e
 For database configuration information, see [db.properties](ycsb/db.properties). 
 
 The following `args` in `docker-compose.yml` are used to control the versions of the Postgres JDBC driver and YCSB.  Feel free to modify if necessary.
-* `POSTGRESQL_JDBC_VERSION` - The version of the Postgres JDBC driver to download and use.  The default value is `42.2.5`.
+* `POSTGRESQL_JDBC_VERSION` - The version of the Postgres JDBC driver to download and use.  The default value is `42.2.12`.
 * `GIT_BRANCH` - The version of YCSB to checkout from `git`.  The default value is `master`.
 
 
