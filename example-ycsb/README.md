@@ -45,108 +45,12 @@ jdbc.batchupdateapi=true
 
 ### Included Workloads
 
-#### workload-a-cockroach
-```properties
-recordcount=1000
-operationcount=1000
-workload=site.ycsb.workloads.CoreWorkload
-
-readallfields=true
-
-readproportion=0.5
-updateproportion=0.5
-scanproportion=0
-insertproportion=0
-
-requestdistribution=zipfian
-```
-
-#### workload-b-cockroach (default)
-```properties
-recordcount=1000
-operationcount=1000
-workload=site.ycsb.workloads.CoreWorkload
-
-readallfields=true
-
-readproportion=0.95
-updateproportion=0.05
-scanproportion=0
-insertproportion=0
-
-requestdistribution=zipfan
-```
-
-#### workload-c-cockroach
-```properties
-recordcount=1000
-operationcount=1000
-workload=site.ycsb.workloads.CoreWorkload
-
-readallfields=true
-
-readproportion=1
-updateproportion=0
-scanproportion=0
-insertproportion=0
-
-requestdistribution=zipfian
-```
-
-#### workload-d-cockroach
-```properties
-recordcount=1000
-operationcount=1000
-workload=site.ycsb.workloads.CoreWorkload
-
-readallfields=true
-
-readproportion=0.95
-updateproportion=0
-scanproportion=0
-insertproportion=0.05
-
-requestdistribution=latest
-```
-
-#### workload-e-cockroach
-```properties
-recordcount=1000
-operationcount=1000
-workload=site.ycsb.workloads.CoreWorkload
-
-readallfields=true
-
-readproportion=0
-updateproportion=0
-scanproportion=0.95
-insertproportion=0.05
-
-requestdistribution=zipfian
-
-maxscanlength=100
-
-scanlengthdistribution=uniform
-```
-
-#### workload-f-cockroach
-```properties
-recordcount=1000
-operationcount=1000
-workload=site.ycsb.workloads.CoreWorkload
-
-readallfields=true
-
-readproportion=0.5
-updateproportion=0
-scanproportion=0
-insertproportion=0
-readmodifywriteproportion=0.5
-
-requestdistribution=zipfian
-```
-
-You can also run the following workloads 
+* [workload-a-cockroach](ycsb/workload-a-cockroach)
+* [workload-b-cockroach](ycsb/workload-b-cockroach) (default)
+* [workload-c-cockroach](ycsb/workload-c-cockroach)
+* [workload-d-cockroach](ycsb/workload-d-cockroach)
+* [workload-e-cockroach](ycsb/workload-e-cockroach)
+* [workload-f-cockroach](ycsb/workload-f-cockroach)
 
 ## Helpful Commands
 
