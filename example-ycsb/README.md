@@ -21,7 +21,7 @@ Demonstrates building and executing the original YCSB workload against a 3 node 
 The following `environment` variables in `docker-compose.yml` control workload execution...
 * `WORKLOAD_NAME` - The name of the workload to run.  The default value is `workload-b-cockroach`.
 * `WORKLOAD_TARGET_OPS` - The target Operations per Second (OPS).  The default value is `100`.
-* `WORKLOAD_RECORD_COUNT` - The number or records to load into the database.   The default value is `20000`.
+* `WORKLOAD_RECORD_COUNT` - The number of records to load into the database.   The default value is `20000`.
 
 ## Advanced Configuration
 For database configuration information, see [db.properties](ycsb/db.properties). 
