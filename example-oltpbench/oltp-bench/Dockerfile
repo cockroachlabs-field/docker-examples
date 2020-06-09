@@ -1,12 +1,12 @@
 ####################################
 #   Multi-stage build
 #       1. build oltpbench
-#       2. build oltpbench client
+#       2. run oltpbench client
 ####################################
 
 # Stage 1 - Build oltpbench
 
-FROM maven:3-jdk-8 as benchmark-builder
+FROM maven:3-jdk-11 as benchmark-builder
 
 LABEL maintainer="tjveil@gmail.com"
 
@@ -19,9 +19,9 @@ RUN mkdir -v /opt/oltpbench \
     && mvn clean package -DskipTests=true
 
 
-# Stage 2 - Build oltpbench client
+# Stage 2 - run oltpbench client
 
-FROM openjdk:8-jdk-slim
+FROM openjdk:11-jdk-slim
 
 LABEL maintainer="tjveil@gmail.com"
 
