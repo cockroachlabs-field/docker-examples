@@ -22,7 +22,7 @@ services:
     container_name: roach-0
     hostname: roach-0
     image: cockroachdb/cockroach:latest
-    command: start --logtostderr=WARNING --log-file-verbosity=WARNING --certs-dir=/certs
+    command: start --cluster-name=example-secure-nginx --logtostderr=WARNING --log-file-verbosity=WARNING --certs-dir=/certs
     volumes:
       - certs-roach-0:/certs
     depends_on:
@@ -32,7 +32,7 @@ services:
     container_name: roach-1
     hostname: roach-1
     image: cockroachdb/cockroach:latest
-    command: start --logtostderr=WARNING --log-file-verbosity=WARNING --certs-dir=/certs --join=roach-0
+    command: start --cluster-name=example-secure-nginx --logtostderr=WARNING --log-file-verbosity=WARNING --certs-dir=/certs --join=roach-0
     volumes:
       - certs-roach-1:/certs
     depends_on:
@@ -43,7 +43,7 @@ services:
     container_name: roach-2
     hostname: roach-2
     image: cockroachdb/cockroach:latest
-    command: start --logtostderr=WARNING --log-file-verbosity=WARNING --certs-dir=/certs --join=roach-0
+    command: start --cluster-name=example-secure-nginx --logtostderr=WARNING --log-file-verbosity=WARNING --certs-dir=/certs --join=roach-0
     volumes:
       - certs-roach-2:/certs
     depends_on:

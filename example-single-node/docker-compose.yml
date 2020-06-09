@@ -6,7 +6,7 @@ services:
     container_name: crdb
     hostname: crdb
     image: cockroachdb/cockroach:latest
-    command: start-single-node --logtostderr=WARNING --log-file-verbosity=WARNING --insecure
+    command: start-single-node --cluster-name=example-single-node --logtostderr=WARNING --log-file-verbosity=WARNING --insecure
     ports:
       - "26257:26257"
       - "8080:8080"
