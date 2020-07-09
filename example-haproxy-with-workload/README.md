@@ -25,11 +25,11 @@ docker-compose exec workload-client /cockroach/cockroach workload run tpcc --tol
 
 ### Open Interactive Shells
 ```bash
-docker exec -ti crdb-0 /bin/bash
-docker exec -ti crdb-1 /bin/bash
-docker exec -ti crdb-2 /bin/bash
-docker exec -ti workload-client /bin/bash
-docker exec -ti lb /bin/sh
+docker-compose exec crdb-0 /bin/bash
+docker-compose exec crdb-1 /bin/bash
+docker-compose exec crdb-2 /bin/bash
+docker-compose exec workload-client /bin/bash
+docker-compose exec lb /bin/sh
 ```
 
 ### Stop Individual nodes

@@ -29,14 +29,14 @@ This distribution can be verified by the SQL commands below or via the UI... htt
 
 ### Open Interactive Shells
 ```bash
-docker exec -ti east-1 /bin/bash
-docker exec -ti east-2 /bin/bash
-docker exec -ti east-3 /bin/bash
-docker exec -ti central-1 /bin/bash
-docker exec -ti central-2 /bin/bash
-docker exec -ti central-3 /bin/bash
-docker exec -ti west-1 /bin/bash
-docker exec -ti west-2 /bin/bash
-docker exec -ti west-3 /bin/bash
+docker-compose exec east-1 /bin/bash
+docker-compose exec east-2 /bin/bash
+docker-compose exec east-3 /bin/bash
+docker-compose exec central-1 /bin/bash
+docker-compose exec central-2 /bin/bash
+docker-compose exec central-3 /bin/bash
+docker-compose exec west-1 /bin/bash
+docker-compose exec west-2 /bin/bash
+docker-compose exec west-3 /bin/bash
 ```
 

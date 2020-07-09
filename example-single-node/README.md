@@ -13,5 +13,5 @@ Simple single node CockroachDB instance.
 
 ### Open Interactive Shells
 ```bash
-docker exec -ti crdb /bin/bash
+docker-compose exec crdb /bin/bash
 ```

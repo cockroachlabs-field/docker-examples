@@ -62,9 +62,9 @@ docker-compose exec crdb-0 /cockroach/cockroach sql --insecure --execute="select
 
 ### Open Interactive Shells
 ```bash
-docker exec -ti crdb-0 /bin/bash
-docker exec -ti crdb-1 /bin/bash
-docker exec -ti crdb-2 /bin/bash
-docker exec -ti lb /bin/sh
-docker exec -ti ycsb /bin/bash
+docker-compose exec crdb-0 /bin/bash
+docker-compose exec crdb-1 /bin/bash
+docker-compose exec crdb-2 /bin/bash
+docker-compose exec lb /bin/sh
+docker-compose exec ycsb /bin/bash
 ```
