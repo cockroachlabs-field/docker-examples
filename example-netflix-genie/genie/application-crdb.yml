@@ -16,24 +16,24 @@
 #
 ##
 
-flyway:
-  locations: db/migration/postgresql
-
 spring:
+
+  flyway:
+    enabled: false
+    locations: classpath:db/migration/postgresql
+
   datasource:
     platform: postgresql
-    url: jdbc:postgresql://crdb:26257/genie
+    url: jdbc:postgresql://crdb:26257/genie?sslmode=disable&ApplicationName=genie&reWriteBatchedInserts=true
     username: root
     password:
-    tomcat:
-      validation-query: select 0;
 
   jpa:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQL95Dialect
     hibernate:
-      ddl-auto: validate
+      ddl-auto: create
 
   profiles:
     active: crdb
