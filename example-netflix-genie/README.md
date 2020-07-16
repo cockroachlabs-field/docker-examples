@@ -1,50 +1,52 @@
-# Basic CockroachDB Cluster with HAProxy
-Simple 3 node CockroachDB cluster with HAProxy acting as load balancer
+# Running Netflix Genie with CockroachDB
+Single node CockroachDB cluster with Netflix Genie https://github.com/Netflix/genie
 
 ## Services
-* `crdb-0` - CockroachDB node
-* `crdb-1` - CockroachDB node
-* `crdb-2` - CockroachDB node
-* `lb` - HAProxy acting as load balancer
+* `crdb` - CockroachDB node
+* `crdb-init` - ephemeral CockroachDB node used to create database
+* `genie` - Genie app instance
+* `genie-apache` - Genie Demo Apache
+* `genie-client` - Genie Demo Client
+* `genie-hadoop-prod` - Simple Hadoop instance
+* `genie-hadoop-test` - Simple Hadoop test instance
+* `genie-presto` - Presto instance
 
 ## Getting started
-1) run `docker-compose up`
-2) visit the CockroachDB UI @ http://localhost:8080
-3) visit the HAProxy UI @ http://localhost:8081
-4) have fun!
+Prior to getting started, I forked https://github.com/Netflix/genie and ran the following to build Genie and create local updated Docker images.
+```
+./gradlew clean build -x check
+./gradlew dockerBuilAllImages -x check
+```
+
+Then...
+
+1) run `./up.sh`
+2) visit the CockroachDB UI @ http://localhost:8081
+3) visit the Genie UI @ http://localhost:8081
+4) from a local shell run the following to test...
+```
+curl 'http://localhost:8080/api/v3/applications' -i -X POST -H 'Content-Type: application/json; charset=UTF-8' -d '{
+  "id" : null,
+  "created" : null,
+  "updated" : null,
+  "version" : "1.5.1",
+  "user" : "genie",
+  "name" : "spark",
+  "description" : "Spark for Genie",
+  "metadata" : { "hi": "bye" },
+  "tags" : [ "type:spark", "ver:1.5.1" ],
+  "configs" : [ "s3://mybucket/spark/1.5.1/spark-env.sh" ],
+  "dependencies" : [ "s3://mybucket/spark/1.5.1/spark.tar.gz" ],
+  "setupFile" : "s3://mybucket/spark/1.5.1/setupBase-spark.sh",
+  "status" : "ACTIVE",
+  "type" : "spark"
+}'
+```
 
 ## Helpful Commands
 
-### Execute SQL
-Use the following to execute arbitrary SQL on the CockroachDB cluster.  The following creates a database called `test`.
-```bash
-docker-compose exec crdb-0 /cockroach/cockroach sql --insecure --execute="CREATE DATABASE test;"
-```
-
-### Initialize and Run the TPC-C Workload
-Use the following commands to initialize and run the `tpcc` sample `workload`.  For more details see [this](https://www.cockroachlabs.com/docs/stable/cockroach-workload.html#run-the-tpcc-workload).
-
-to initialize...
-```bash
-docker-compose exec crdb-0 /cockroach/cockroach workload init tpcc "postgresql://root@localhost:26257?sslmode=disable"
-```
-
-to run for `10m`...
-```bash
-docker-compose exec crdb-0 /cockroach/cockroach workload run tpcc --duration=10m "postgresql://root@localhost:26257?sslmode=disable"
-```
-
 ### Open Interactive Shells
 ```bash
+docker-compose exec crdb /bin/bash
 docker-compose exec genie /bin/bash
-docker-compose exec crdb-1 /bin/bash
-docker-compose exec crdb-2 /bin/bash
-docker-compose exec lb /bin/sh
-```
-
-### Stop Individual nodes
-```bash
-docker-compose stop crdb-0
-docker-compose stop crdb-1
-docker-compose stop crdb-2
 ```
