@@ -15,7 +15,7 @@ Single node CockroachDB cluster with Netflix Genie https://github.com/Netflix/ge
 I forked https://github.com/Netflix/genie and ran the following to build Genie and create local updated Docker images.
 ```
 ./gradlew clean build -x check
-./gradlew dockerBuilAllImages -x check
+./gradlew clean dockerBuildAllImages -x check
 ```
 
 Then...
