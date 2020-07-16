@@ -11,8 +11,8 @@ Single node CockroachDB cluster with Netflix Genie https://github.com/Netflix/ge
 * `genie-hadoop-test` - Simple Hadoop test instance
 * `genie-presto` - Presto instance
 
-## Getting started
-Prior to getting started, I forked https://github.com/Netflix/genie and ran the following to build Genie and create local updated Docker images.
+## Testing
+I forked https://github.com/Netflix/genie and ran the following to build Genie and create local updated Docker images.
 ```
 ./gradlew clean build -x check
 ./gradlew dockerBuilAllImages -x check
@@ -21,9 +21,7 @@ Prior to getting started, I forked https://github.com/Netflix/genie and ran the 
 Then...
 
 1) run `./up.sh`
-2) visit the CockroachDB UI @ http://localhost:8081
-3) visit the Genie UI @ http://localhost:8081
-4) from a local shell run the following to test...
+3) from a local shell run the following to test...
 ```
 curl 'http://localhost:8080/api/v3/applications' -i -X POST -H 'Content-Type: application/json; charset=UTF-8' -d '{
   "id" : null,
@@ -42,6 +40,14 @@ curl 'http://localhost:8080/api/v3/applications' -i -X POST -H 'Content-Type: ap
   "type" : "spark"
 }'
 ```
+
+Currently CockroachDB fails with the following error in Genie
+
+```
+2020-07-16 14:47:01.315  WARN 1 --- [nio-8080-exec-1] o.h.e.j.s.SqlExceptionHelper             : SQL Error: 0, SQLState: 99999
+2020-07-16 14:47:01.316 ERROR 1 --- [nio-8080-exec-1] o.h.e.j.s.SqlExceptionHelper             : The fastpath function lo_creat is unknown.
+```
+
 
 ## Helpful Commands
 
