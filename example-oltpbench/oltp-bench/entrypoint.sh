@@ -15,7 +15,7 @@ else
 
         cd  /opt/oltpbench
 
-        java -jar oltpbench-*.jar -b ${BENCHMARK_NAME} -c config/${BENCHMARK_CONFIG_FILE} --create=true --load=true --execute=true -s 5
+        java -jar oltpbench2.jar -b ${BENCHMARK_NAME} -c config/${BENCHMARK_CONFIG_FILE} --create=true --load=true --execute=true -s 5
 
     else
 
