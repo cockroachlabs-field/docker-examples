@@ -56,3 +56,22 @@ Currently CockroachDB fails with the following error in Genie
 docker-compose exec crdb /bin/bash
 docker-compose exec genie /bin/bash
 ```
+
+## Testing with CRDB Hibernate Dialect Alpha
+
+I downloaded the `hibernate-core-5.5.0-SNAPSHOT.jar` jar to my local `Downloads` folder and ran the below command to upload this jar to a private `mvn` repo that I created here `https://mymavenrepo.com/app/repos/euqQvvGJ8W8mugiThH33/`
+
+```
+mvn deploy:deploy-file -DgroupId=org.hibernate \
+  -DartifactId=hibernate-core \
+  -Dversion=5.5.0-SNAPSHOT \
+  -Dpackaging=jar \
+  -Dfile=hibernate-core-5.5.0-SNAPSHOT.jar \
+  -Durl=https://mymavenrepo.com/repo/bj1Jazo305dltxkS0McV/
+```
+
+I then modified the `build.properties` and `build.gradle` files to refer this new Hibernate version. 
+
+`org.hibernate:hibernate-core:5.5.0-SNAPSHOT`
+
+Not clear why, but this custom jar does not provide dependency information.  As a result, I had to also manually include its transitive dependencies.  These were added to `genie-web` > `build.gradle`.
