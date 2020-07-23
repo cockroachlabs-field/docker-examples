@@ -42,7 +42,7 @@ curl 'http://localhost:8080/api/v3/applications' -i -X POST -H 'Content-Type: ap
 }'
 ```
 
-An alternate method to test the Genier server would be to simply build Genie from the fork and run something like this (assuming CRDB is up)
+An alternate method to test the Genie server would be to simply build Genie from the fork and run something like this (assuming CRDB is up)
 ```
 java -jar genie-app/build/libs/genie-app-4.0.0-SNAPSHOT.jar \
     --spring.jpa.hibernate.ddl-auto=create \
