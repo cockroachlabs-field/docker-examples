@@ -42,6 +42,16 @@ curl 'http://localhost:8080/api/v3/applications' -i -X POST -H 'Content-Type: ap
 }'
 ```
 
+An alternate method would be to simply build Genie from the fork and run something like this (assuming CRDB is up)
+```
+java -jar genie-app/build/libs/genie-app-4.0.0-SNAPSHOT.jar \
+    --spring.jpa.hibernate.ddl-auto=create \
+    --spring.flyway.enabled=false \
+    --spring.datasource.url=jdbc:postgresql://127.0.0.1:26250/genie?sslmode=disable \
+    --spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.CockroachDB201Dialect \
+    --spring.datasource.platform=postgresql
+```
+
 ## Helpful Commands
 
 ### Open Interactive Shells
@@ -62,3 +72,6 @@ mvn deploy:deploy-file -DgroupId=org.hibernate \
   -Dfile=hibernate-core-5.5.0-SNAPSHOT.jar \
   -Durl=https://mymavenrepo.com/repo/bj1Jazo305dltxkS0McV/
 ```
+
+
+    
