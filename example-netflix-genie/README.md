@@ -12,13 +12,14 @@ Single node CockroachDB cluster with Netflix Genie https://github.com/Netflix/ge
 * `genie-presto` - Presto instance
 
 ## Testing
-I forked https://github.com/Netflix/genie and ran the following to build Genie and create local updated Docker images.
+I forked Genie [here](https://github.com/timveil-cockroach/genie) and updated a handful of `gradle` files to pull the custom Hibernate jar (`hibernate-core-5.5.0-SNAPSHOT.jar`) containing the new `org.hibernate.dialect.CockroachDB201Dialect`.  To simplfy testing, I published the custom Hibernate jar to publically assessible custom Maven repository... https://mymavenrepo.com/repo/RxBukD1nCtgtoR5src2I/.  Before testing, I ran the following commands to build Genie and create local updated Docker images with the new dependencies.
+
 ```
 ./gradlew clean build -x check
 ./gradlew clean dockerBuildAllImages -x check
 ```
 
-Then...
+Once the new docker images are ready, run the following.
 
 1) run `./up.sh`
 3) from a local shell run the following to test...
@@ -41,14 +42,6 @@ curl 'http://localhost:8080/api/v3/applications' -i -X POST -H 'Content-Type: ap
 }'
 ```
 
-Currently CockroachDB fails with the following error in Genie
-
-```
-2020-07-16 14:47:01.315  WARN 1 --- [nio-8080-exec-1] o.h.e.j.s.SqlExceptionHelper             : SQL Error: 0, SQLState: 99999
-2020-07-16 14:47:01.316 ERROR 1 --- [nio-8080-exec-1] o.h.e.j.s.SqlExceptionHelper             : The fastpath function lo_creat is unknown.
-```
-
-
 ## Helpful Commands
 
 ### Open Interactive Shells
@@ -57,9 +50,9 @@ docker-compose exec crdb /bin/bash
 docker-compose exec genie /bin/bash
 ```
 
-## Testing with CRDB Hibernate Dialect Alpha
+## Publishing the custom CRDB Hibernate jar
 
-I downloaded the `hibernate-core-5.5.0-SNAPSHOT.jar` jar to my local `Downloads` folder and ran the below command to upload this jar to a private `mvn` repo that I created here `https://mymavenrepo.com/app/repos/euqQvvGJ8W8mugiThH33/`
+I downloaded the `hibernate-core-5.5.0-SNAPSHOT.jar` jar (provided by CRDB engineering) to my local `Downloads` folder and ran the below command to upload this jar to a private `mvn` repo that I created here `https://mymavenrepo.com/app/repos/euqQvvGJ8W8mugiThH33/`
 
 ```
 mvn deploy:deploy-file -DgroupId=org.hibernate \
@@ -69,9 +62,3 @@ mvn deploy:deploy-file -DgroupId=org.hibernate \
   -Dfile=hibernate-core-5.5.0-SNAPSHOT.jar \
   -Durl=https://mymavenrepo.com/repo/bj1Jazo305dltxkS0McV/
 ```
-
-I then modified the `build.properties` and `build.gradle` files to refer this new Hibernate version. 
-
-`org.hibernate:hibernate-core:5.5.0-SNAPSHOT`
-
-Not clear why, but this custom jar does not provide dependency information.  As a result, I had to also manually include its transitive dependencies.  These were added to `genie-web` > `build.gradle`.
