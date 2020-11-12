@@ -19,7 +19,7 @@ services:
     networks:
       - shared
       - east
-    command: start --logtostderr=WARNING --log-file-verbosity=WARNING --insecure --locality=datacenter=east
+    command: start-single-node --logtostderr=WARNING --log-file-verbosity=WARNING --insecure --locality=datacenter=east
     ports:
       - 8001:8080
       - 9001:26257
