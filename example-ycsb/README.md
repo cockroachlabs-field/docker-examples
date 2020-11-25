@@ -34,7 +34,7 @@ The following `args` in `docker-compose.yml` are used to control the versions of
 ### db.properties
 ```properties
 db.driver=org.postgresql.Driver
-db.url=jdbc:postgresql://lb:5432/ycsb?sslmode=disable&application_name=ycsb&reWriteBatchedInserts=true
+db.url=jdbc:postgresql://lb:26257/ycsb?sslmode=disable&application_name=ycsb&reWriteBatchedInserts=true
 db.user=root
 db.passwd=
 db.batchsize=128

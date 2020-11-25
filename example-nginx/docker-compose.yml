@@ -29,7 +29,7 @@ services:
     hostname: lb
     build: ./nginx
     ports:
-      - "5432:5432"
+      - "26257:26257"
       - "8080:8080"
     links:
       - crdb-0

@@ -55,7 +55,7 @@ services:
     hostname: lb
     build: nginx
     ports:
-      - "5432:5432"
+      - "26257:26257"
       - "8080:8080"
     depends_on:
       - roach-0
@@ -68,7 +68,7 @@ services:
     hostname: roach-init
     image: timveil/cockroachdb-remote-client:latest
     environment:
-      - COCKROACH_HOST=lb:5432
+      - COCKROACH_HOST=lb:26257
       - COCKROACH_INSECURE=false
       - COCKROACH_CERTS_DIR=/certs
       - DATABASE_NAME=test
