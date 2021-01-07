@@ -1,4 +1,4 @@
-FROM netflixoss/genie-app:latest.snapshot
+FROM netflixoss/genie-app:latest.candidate
 
 LABEL maintainer="tjveil@gmail.com"
 
