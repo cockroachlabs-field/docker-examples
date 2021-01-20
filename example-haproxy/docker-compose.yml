@@ -38,3 +38,14 @@ services:
       - crdb-0
       - crdb-1
       - crdb-2
+
+  crdb-init:
+    container_name: crdb-init
+    hostname: crdb-init
+    image: timveil/cockroachdb-remote-client:latest
+    environment:
+      - COCKROACH_HOST=lb:26257
+      - COCKROACH_INSECURE=true
+      - DATABASE_NAME=test
+    depends_on:
+      - lb

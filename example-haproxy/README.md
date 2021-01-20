@@ -6,6 +6,7 @@ Simple 3 node CockroachDB cluster with HAProxy acting as load balancer
 * `crdb-1` - CockroachDB node
 * `crdb-2` - CockroachDB node
 * `lb` - HAProxy acting as load balancer
+* `crdb-init` - Executes some commands against CockroachDB and shuts down. See [here](https://github.com/timveil-cockroach/cockroachdb-remote-client).
 
 ## Getting started
 1) run `docker-compose up`
