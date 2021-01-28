@@ -1,5 +1,5 @@
 # Running Netflix Genie with CockroachDB
-Single node CockroachDB cluster with Netflix Genie https://github.com/Netflix/genie
+Single node CockroachDB instance running as the metastore for [Netflix Genie](https://github.com/Netflix/genie)
 
 ## Services
 * `crdb` - CockroachDB node
