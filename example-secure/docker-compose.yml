@@ -59,11 +59,11 @@ services:
       - "8080:8080"
       - "8081:8081"
     environment:
-      - NODES=crdb-0 crdb-1 crdb-2
+      - NODES=roach-0 roach-1 roach-2
     links:
-      - crdb-0
-      - crdb-1
-      - crdb-2
+      - roach-0
+      - roach-1
+      - roach-2
 
   roach-init:
     container_name: roach-init
