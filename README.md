@@ -11,6 +11,7 @@
 * [YCSB Functional Example](example-ycsb/README.md) - Building and running [YCSB](https://github.com/brianfrankcooper/YCSB) against a 3 node CockroachDB cluster
 * [OLTPBench Functional Example](example-oltpbench/README.md) - Building and running a fork of [OLTPBench](https://github.com/timveil-cockroach/oltpbench) against a 3 node CockroachDB cluster
 * [Netflix Genie Metastore Example](example-netflix-genie) - Example using CockroachDB as the metastore for [Netflix Genie](https://github.com/Netflix/genie)
+* [Apache Druid Metastore Example](example-apache-druid) - Example using CockroachDB as the metastore for [Apache Druid](https://druid.apache.org/docs/latest/design/index.html)
 
 
 ## Useful commands
