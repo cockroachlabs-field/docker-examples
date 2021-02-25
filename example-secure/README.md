@@ -27,6 +27,10 @@ docker-compose exec roach-2 /bin/bash
 docker-compose exec lb /bin/sh
 docker-compose exec roach-cert /bin/sh
 ```
+### Copy CA Certificate
+```bash
+docker cp roach-cert:/certs/client/ca.crt .
+```
 
 ### Copy Client Certificate and Key
 Use these commands to copy `client.root.*` files from the `roach-cert` docker image to your local machine
