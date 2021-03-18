@@ -1,40 +1,38 @@
 version: '3.5'
 
 volumes:
-  certs-roach-0:
-  certs-roach-1:
-  certs-roach-2:
-  certs-client:
+  certs:
 
 services:
 
   roach-cert:
     container_name: roach-cert
     hostname: roach-cert
-    build: roach-cert
+    image: timveil/cockroachdb-dynamic-certs:latest
     volumes:
-      - certs-roach-0:/certs/roach-0
-      - certs-roach-1:/certs/roach-1
-      - certs-roach-2:/certs/roach-2
-      - certs-client:/certs/client
+      - certs:/.cockroach-certs
+    environment:
+      - NODE_ALTERNATIVE_NAMES=*.crdb.io localhost
 
   roach-0:
     container_name: roach-0
     hostname: roach-0
+    domainname: crdb.io
     image: cockroachdb/cockroach:latest
-    command: start-single-node --cluster-name=example-secure --logtostderr=WARNING --log-file-verbosity=WARNING --certs-dir=/certs --listen-addr=roach-0:26257 --advertise-addr=roach-0:26257
+    command: start-single-node --cluster-name=example-secure --logtostderr=WARNING --log-file-verbosity=WARNING --certs-dir=/certs --listen-addr=roach-0.crdb.io:26257 --advertise-addr=roach-0.crdb.io:26257
     volumes:
-      - certs-roach-0:/certs
+      - certs:/certs:ro
     depends_on:
       - roach-cert
 
   roach-1:
     container_name: roach-1
     hostname: roach-1
+    domainname: crdb.io
     image: cockroachdb/cockroach:latest
-    command: start --cluster-name=example-secure --logtostderr=WARNING --log-file-verbosity=WARNING --certs-dir=/certs --join=roach-0 --listen-addr=roach-1:26257 --advertise-addr=roach-1:26257
+    command: start --cluster-name=example-secure --logtostderr=WARNING --log-file-verbosity=WARNING --certs-dir=/certs --join=roach-0.crdb.io --listen-addr=roach-1.crdb.io:26257 --advertise-addr=roach-1.crdb.io:26257
     volumes:
-      - certs-roach-1:/certs
+      - certs:/certs:ro
     depends_on:
       - roach-cert
       - roach-0
@@ -42,10 +40,11 @@ services:
   roach-2:
     container_name: roach-2
     hostname: roach-2
+    domainname: crdb.io
     image: cockroachdb/cockroach:latest
-    command: start --cluster-name=example-secure --logtostderr=WARNING --log-file-verbosity=WARNING --certs-dir=/certs --join=roach-0 --listen-addr=roach-2:26257 --advertise-addr=roach-2:26257
+    command: start --cluster-name=example-secure --logtostderr=WARNING --log-file-verbosity=WARNING --certs-dir=/certs --join=roach-0.crdb.io --listen-addr=roach-2.crdb.io:26257 --advertise-addr=roach-2.crdb.io:26257
     volumes:
-      - certs-roach-2:/certs
+      - certs:/certs:ro
     depends_on:
       - roach-cert
       - roach-0
@@ -70,14 +69,14 @@ services:
     hostname: roach-init
     image: timveil/cockroachdb-remote-client:latest
     environment:
-      - COCKROACH_HOST=roach-0:26257
+      - COCKROACH_HOST=roach-0.crdb.io:26257
       - COCKROACH_INSECURE=false
       - COCKROACH_CERTS_DIR=/certs
       - DATABASE_NAME=test
       - DATABASE_USER=test
       - DATABASE_PASSWORD=password
     volumes:
-      - certs-client:/certs
+      - certs:/certs:ro
     depends_on:
       - lb
       - roach-cert
