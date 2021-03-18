@@ -1,0 +1,31 @@
+version: "2"
+
+services:
+  crdb:
+    container_name: crdb
+    hostname: crdb
+    image: cockroachdb/cockroach:latest
+    command: start-single-node --cluster-name=example-single-node --logtostderr=WARNING --log-file-verbosity=WARNING --insecure
+    ports:
+      - "26257:26257"
+      - "8081:8080"
+
+  crdb-init:
+    container_name: crdb-init
+    hostname: crdb-init
+    image: timveil/cockroachdb-remote-client:latest
+    environment:
+      - COCKROACH_HOST=crdb:26257
+      - COCKROACH_INSECURE=true
+      - DATABASE_NAME=genie
+    depends_on:
+      - crdb
+
+  jeager:
+    container_name: jeager
+    hostname: jeager
+    image: jaegertracing/all-in-one:latest
+    ports:
+      - "16686:16686"
+    depends_on:
+      - crdb
