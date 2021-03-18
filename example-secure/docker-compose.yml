@@ -70,7 +70,7 @@ services:
     hostname: roach-init
     image: timveil/cockroachdb-remote-client:latest
     environment:
-      - COCKROACH_HOST=lb:26257
+      - COCKROACH_HOST=roach-0:26257
       - COCKROACH_INSECURE=false
       - COCKROACH_CERTS_DIR=/certs
       - DATABASE_NAME=test

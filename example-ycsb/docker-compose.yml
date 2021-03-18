@@ -44,7 +44,7 @@ services:
     hostname: crdb-init
     image: timveil/cockroachdb-remote-client:latest
     environment:
-      - COCKROACH_HOST=lb:26257
+      - COCKROACH_HOST=crdb-0:26257
       - COCKROACH_INSECURE=true
       - DATABASE_NAME=ycsb
     depends_on:
