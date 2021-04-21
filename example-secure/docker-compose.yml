@@ -48,7 +48,7 @@ services:
 
   lb:
     container_name: lb
-    hostname: lb
+    hostname: lb.crdb.io
     image: timveil/dynamic-haproxy:latest
     ports:
       - "26257:26257"
