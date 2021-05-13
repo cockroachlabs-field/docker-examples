@@ -19,7 +19,7 @@
 ### Generate and Download Debug Archive
 Generate `debug.zip` file on `crdb-0`.  For more details see https://www.cockroachlabs.com/docs/stable/debug-zip.html
 ```bash
-docker-compose exec crdb-0 /cockroach/cockroach debug zip ./cockroach-data/logs/debug.zip --insecure
+docker compose exec crdb-0 /cockroach/cockroach debug zip ./cockroach-data/logs/debug.zip --insecure
 ```
 
 Copy `debug.zip` from `crdb-0` to current local directory

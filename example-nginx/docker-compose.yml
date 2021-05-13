@@ -31,7 +31,7 @@ services:
     ports:
       - "26257:26257"
       - "8080:8080"
-    links:
+    depends_on:
       - crdb-0
       - crdb-1
       - crdb-2

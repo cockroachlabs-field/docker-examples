@@ -21,11 +21,11 @@ Simple 3 node *secure* CockroachDB cluster with HAProxy acting as load balancer
 
 ### Open Interactive Shells
 ```bash
-docker-compose exec roach-0 /bin/bash
-docker-compose exec roach-1 /bin/bash
-docker-compose exec roach-2 /bin/bash
-docker-compose exec lb /bin/sh
-docker-compose exec roach-cert /bin/sh
+docker compose exec roach-0 /bin/bash
+docker compose exec roach-1 /bin/bash
+docker compose exec roach-2 /bin/bash
+docker compose exec lb /bin/sh
+docker compose exec roach-cert /bin/sh
 ```
 ### Copy CA Certificate
 ```bash

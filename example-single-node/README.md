@@ -5,7 +5,7 @@ Simple single node CockroachDB instance.
 * `crdb` - CockroachDB node
 
 ## Getting started
-1) run `docker-compose up`
+1) run `docker compose up`
 2) visit the CockroachDB UI @ http://localhost:8080
 3) have fun!
 
@@ -13,5 +13,5 @@ Simple single node CockroachDB instance.
 
 ### Open Interactive Shells
 ```bash
-docker-compose exec crdb /bin/bash
+docker compose exec crdb /bin/bash
 ```

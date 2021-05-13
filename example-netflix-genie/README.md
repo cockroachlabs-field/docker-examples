@@ -32,8 +32,8 @@ curl 'http://localhost:8080/api/v3/applications' -i -X POST -H 'Content-Type: ap
 
 ### Open Interactive Shells
 ```bash
-docker-compose exec crdb /bin/bash
-docker-compose exec genie /bin/bash
+docker compose exec crdb /bin/bash
+docker compose exec genie /bin/bash
 ```
 
 

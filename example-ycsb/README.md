@@ -12,7 +12,7 @@ Demonstrates building and executing the original YCSB workload against a 3 node 
 * `ycsb` - YCSB client container responsible for executing benchmark workload
 
 ## Getting started
-1) because operation order is important, execute `./up.sh` instead of `docker-compose up`
+1) because operation order is important, execute `./up.sh` instead of `docker compose up`
 2) visit the CockroachDB UI @ http://localhost:8080
 3) visit the HAProxy UI @ http://localhost:8081
 4) have fun!
@@ -57,14 +57,14 @@ jdbc.batchupdateapi=true
 ### Execute SQL
 Use the following to execute arbitrary SQL on the CockroachDB cluster.
 ```bash
-docker-compose exec crdb-0 /cockroach/cockroach sql --insecure --execute="select count(*) from ycsb.usertable;"
+docker compose exec crdb-0 /cockroach/cockroach sql --insecure --execute="select count(*) from ycsb.usertable;"
 ```
 
 ### Open Interactive Shells
 ```bash
-docker-compose exec crdb-0 /bin/bash
-docker-compose exec crdb-1 /bin/bash
-docker-compose exec crdb-2 /bin/bash
-docker-compose exec lb /bin/sh
-docker-compose exec ycsb /bin/bash
+docker compose exec crdb-0 /bin/bash
+docker compose exec crdb-1 /bin/bash
+docker compose exec crdb-2 /bin/bash
+docker compose exec lb /bin/sh
+docker compose exec ycsb /bin/bash
 ```

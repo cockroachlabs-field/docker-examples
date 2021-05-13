@@ -11,7 +11,7 @@ A single node CRDB instance serving as the metadata store for Apache Druid inste
 * `router` - Apache Druid required service
 
 ## Getting started
-1) run `docker-compose up`
+1) run `docker compose up`
 2) visit the CockroachDB UI @ http://localhost:8080
 3) visit the Apache Druid UI @ http://localhost:8888
 4) have fun!

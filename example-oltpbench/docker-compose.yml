@@ -34,7 +34,7 @@ services:
       - "8081:8081"
     environment:
       - NODES=crdb-0 crdb-1 crdb-2
-    links:
+    depends_on:
       - crdb-0
       - crdb-1
       - crdb-2
