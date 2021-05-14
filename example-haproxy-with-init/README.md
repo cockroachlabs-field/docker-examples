@@ -1,5 +1,5 @@
 # Basic CockroachDB Cluster with HAProxy + init
-Simple 3 node CockroachDB cluster with HAProxy acting as load balancer
+Simple 3 node CockroachDB cluster with HAProxy acting as load balancer.  Unlike other examples that use `start-single-node` on the first node to initialize the cluster, this example uses `crdb-init` to execute the `init` command against the CockroachDB cluster.
 
 ## Services
 * `crdb-0` - CockroachDB node
