@@ -6,7 +6,7 @@ services:
     container_name: crdb-0
     hostname: crdb-0
     image: cockroachdb/cockroach:latest
-    command: start-single-node --cluster-name=example-ycsb --logtostderr=WARNING --log-file-verbosity=WARNING --insecure
+    command: start --cluster-name=example-ycsb --logtostderr=WARNING --log-file-verbosity=WARNING --insecure --join=crdb-0
 
   crdb-1:
     container_name: crdb-1
@@ -46,6 +46,7 @@ services:
     environment:
       - COCKROACH_HOST=crdb-0:26257
       - COCKROACH_INSECURE=true
+      - COCKROACH_INIT=true
       - DATABASE_NAME=ycsb
     depends_on:
       - lb
@@ -62,5 +63,3 @@ services:
       - WORKLOAD_NAME=workload-b-cockroach
       - WORKLOAD_TARGET_OPS=100
       - WORKLOAD_RECORD_COUNT=20000
-    depends_on:
-      - crdb-init

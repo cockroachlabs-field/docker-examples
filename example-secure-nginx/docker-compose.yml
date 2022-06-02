@@ -22,7 +22,7 @@ services:
     container_name: roach-0
     hostname: roach-0
     image: cockroachdb/cockroach:latest
-    command: start-single-node --cluster-name=example-secure-nginx --logtostderr=WARNING --log-file-verbosity=WARNING --certs-dir=/certs
+    command: start --cluster-name=example-secure-nginx --logtostderr=WARNING --log-file-verbosity=WARNING --certs-dir=/certs --join=roach-0
     volumes:
       - certs-roach-0:/certs
     depends_on:
@@ -71,6 +71,7 @@ services:
       - COCKROACH_HOST=roach-0:26257
       - COCKROACH_INSECURE=false
       - COCKROACH_CERTS_DIR=/certs
+      - COCKROACH_INIT=true
       - DATABASE_NAME=test
       - DATABASE_USER=test
       - DATABASE_PASSWORD=password

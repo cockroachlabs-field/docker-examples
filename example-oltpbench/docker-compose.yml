@@ -6,7 +6,7 @@ services:
     container_name: crdb-0
     hostname: crdb-0
     image: cockroachdb/cockroach:latest
-    command: start-single-node --cluster-name=example-oltpbench --logtostderr=WARNING --log-file-verbosity=WARNING --insecure --max-sql-memory=4GB
+    command: start --cluster-name=example-oltpbench --logtostderr=WARNING --log-file-verbosity=WARNING --insecure --join=crdb-0 --max-sql-memory=4GB
 
   crdb-1:
     container_name: crdb-1
@@ -46,6 +46,7 @@ services:
     environment:
       - COCKROACH_HOST=crdb-0:26257
       - COCKROACH_INSECURE=true
+      - COCKROACH_INIT=true
       - DATABASE_NAME=oltpbench
     depends_on:
       - lb
@@ -58,5 +59,3 @@ services:
     environment:
       - BENCHMARK_NAME=tpcc
       - BENCHMARK_CONFIG_FILE=crdb_tpcc_config.xml
-    depends_on:
-      - crdb-init

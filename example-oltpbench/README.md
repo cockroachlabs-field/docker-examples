@@ -1,4 +1,7 @@
-# Running OLTP-Bench Suite Fork
+# Running OLTP-Bench Suite Fork (DEPRECATED)
+
+> This example is deprecated as OLTP-Bench is no longer active.  Please see [Benchbase](https://github.com/cmu-db/benchbase) instead.
+
 Demonstrates building and executing a fork of the `OLTP-Bench` suite against a 3 node CockroachDB cluster.  More information on the `OLTP-Bench` fork can be found here: https://github.com/timveil-cockroach/oltpbench.
 
 > This is included here as a functional example.  This configuration should not be considered the basis for a performance evaluation.
